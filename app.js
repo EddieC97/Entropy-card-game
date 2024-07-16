@@ -4,6 +4,7 @@
 //     "Scissor", "Scissor", "Scissor", "Scissor", "Scissor",
 //     "Spock", "Spock", "Spock", "Spock", "Spock",
 //     "Lizard", "Lizard", "Lizard", "Lizard", "Lizard"];
+let hasWorn = true
 
 let choices = ["Rock", "Paper", "Scissor", "Spock", "Lizard" ]
 let effect = ["Heal 5 HP", "Deal 5 HP"];
@@ -49,30 +50,31 @@ function shuffle (deck) {
 
 function compare () {
     if (playerChoice === computerChoice) {
-        msg = `you tied!`
-    } else if (playerChoice === choices[0] && computerChoice === choices[2]) {
-        msg = `you win`
-    } else if (playerChoice === choices[0] && computerChoice === choices[4]) {
-        msg = `you win`
-    } else if (playerChoice === choices[1] && computerChoice === choices[0]) {
-        msg = `you win`
-    } else if (playerChoice === choices[1] && computerChoice === choices[3]) {
-        msg = `you win`
-    } else if (playerChoice === choices[2] && computerChoice === choices[1]) {
-        msg =`you win`
-    } else if (playerChoice === choices[2] && computerChoice === choices[4]) {
-        msg = `you win`
-    } else if (playerChoice === choices[3] && computerChoice === choices[0]) {
-        msg = `you win`
-    } else if (playerChoice === choices[3] && computerChoice === choices[2]) {
-        msg = `you win`
-    } else if (playerChoice === choices[4] && computerChoice === choices[1]) {
-        msg = `you win`
-    } else if (playerChoice === choices[4] && computerChoice === choices[3]) {
-        msg = `you win`
-    } else {
-        msg = `you lose, try again`
+        return
+    } else if (
+        playerChoice === choices[0] && computerChoice === choices[2] || 
+        playerChoice === choices[0] && computerChoice === choices[4] ||
+        playerChoice === choices[1] && computerChoice === choices[0] ||
+        playerChoice === choices[1] && computerChoice === choices[3] ||
+        playerChoice === choices[2] && computerChoice === choices[1] ||
+        playerChoice === choices[2] && computerChoice === choices[4] ||
+        playerChoice === choices[3] && computerChoice === choices[0] ||
+        playerChoice === choices[3] && computerChoice === choices[2] ||
+        playerChoice === choices[4] && computerChoice === choices[1] ||
+        playerChoice === choices[4] && computerChoice === choices[3] 
+    ) {
+        return hasWon = true
+    } else  {
+        return hasWon = false 
     }
+}
+
+function dealingDamage() {
+
+}
+
+function healDamage() {
+    
 }
 
 function effectTrigger () {
