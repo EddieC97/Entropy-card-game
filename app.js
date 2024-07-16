@@ -52,13 +52,25 @@ function compare () {
         msg = `you tied!`
     } else if (playerChoice === choices[0] && computerChoice === choices[2]) {
         msg = `you win`
+    } else if (playerChoice === choices[0] && computerChoice === choices[4]) {
+        msg = `you win`
     } else if (playerChoice === choices[1] && computerChoice === choices[0]) {
+        msg = `you win`
+    } else if (playerChoice === choices[1] && computerChoice === choices[3]) {
         msg = `you win`
     } else if (playerChoice === choices[2] && computerChoice === choices[1]) {
         msg =`you win`
-    } else {
-        msg =`you lose! Try again?`
-    }    
+    } else if (playerChoice === choices[2] && computerChoice === choices[4]) {
+        msg = `you win`
+    } else if (playerChoice === choices[3] && computerChoice === choices[0]) {
+        msg = `you win`
+    } else if (playerChoice === choices[3] && computerChoice === choices[2]) {
+        msg = `you win`
+    } else if (playerChoice === choices[4] && computerChoice === choices[1]) {
+        msg = `you win`
+    } else if (playerChoice === choices[4] && computerChoice === choices[3]) {
+        msg = `you win`
+    }
 }
 
 
