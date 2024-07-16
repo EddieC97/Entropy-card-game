@@ -4,7 +4,10 @@
 //     "Scissor", "Scissor", "Scissor", "Scissor", "Scissor",
 //     "Spock", "Spock", "Spock", "Spock", "Spock",
 //     "Lizard", "Lizard", "Lizard", "Lizard", "Lizard"];
-let hasWorn = true
+let hasWon = true
+// let nobodyWon = true
+let playerHp = 20
+let computerHp = 20
 
 let choices = ["Rock", "Paper", "Scissor", "Spock", "Lizard" ]
 let effect = ["Heal 5 HP", "Deal 5 HP"];
@@ -18,7 +21,6 @@ for (i =0; i < 5 ; i ++) {
     }
 }
 
-console.log(deck)
 
 
 
@@ -50,7 +52,7 @@ function shuffle (deck) {
 
 function compare () {
     if (playerChoice === computerChoice) {
-        return
+        return nobodyWon = true
     } else if (
         playerChoice === choices[0] && computerChoice === choices[2] || 
         playerChoice === choices[0] && computerChoice === choices[4] ||
@@ -69,12 +71,29 @@ function compare () {
     }
 }
 
-function dealingDamage() {
 
+hasWon = true
+
+function dealingDamage(hasWon,nobodyWon) {
+    if (hasWon === true) {
+        playerHp -= 5
+        return playerHp
+    } else if (hasWon === false) {
+        computerHp -= 5
+        return computerHp
+    } else if (nobodyWon === true) {
+        return
+    }
 }
 
+console.log(playerHp)
+
+console.log(dealingDamage())
+
+
+
 function healDamage() {
-    
+
 }
 
 function effectTrigger () {
@@ -85,5 +104,7 @@ function effectHalt () {
     return
 }
 
+function play() {
 
-
+    
+}
