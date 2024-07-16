@@ -85,14 +85,26 @@ function dealingDamage(compareResult) {
     }
 }
 
+outcome = `user`
 
 
-function healDamage(compareresults) {
-    if (compareResults === `user`) {
-
+function healDamage(compareResult) {
+    if (compareResult === `user`) {
+        playerHp += 5
+        return playerHp
+    } else if (compareResult === `computer`) {
+        computerHp += 5
+        return computerHp
+    } else {
+        return
     }
-
 }
+
+console.log (`playerHp:`, playerHp)
+console.log(healDamage(`user`))
+
+console.log(`computerHp:`, computerHp)
+console.log(healDamage(`computer`))
 
 function effectTrigger () {
 
