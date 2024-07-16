@@ -70,11 +70,18 @@ function compare () {
         msg = `you win`
     } else if (playerChoice === choices[4] && computerChoice === choices[3]) {
         msg = `you win`
+    } else {
+        msg = `you lose, try again`
     }
 }
 
+function effectTrigger () {
 
+}
 
+function effectHalt () {
+    return
+}
 
 
 
