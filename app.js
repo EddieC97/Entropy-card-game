@@ -4,9 +4,8 @@
 //     "Scissor", "Scissor", "Scissor", "Scissor", "Scissor",
 //     "Spock", "Spock", "Spock", "Spock", "Spock",
 //     "Lizard", "Lizard", "Lizard", "Lizard", "Lizard"];
-let hasWon = true
-// let nobodyWon = true
-let playerHp = 20
+let outcome // `user`, `computer`, `draw` 
+let playerHp = 30
 let computerHp = 20
 
 let choices = ["Rock", "Paper", "Scissor", "Spock", "Lizard" ]
@@ -52,7 +51,7 @@ function shuffle (deck) {
 
 function compare () {
     if (playerChoice === computerChoice) {
-        return nobodyWon = true
+        return outcome = `draw`
     } else if (
         playerChoice === choices[0] && computerChoice === choices[2] || 
         playerChoice === choices[0] && computerChoice === choices[4] ||
@@ -65,34 +64,33 @@ function compare () {
         playerChoice === choices[4] && computerChoice === choices[1] ||
         playerChoice === choices[4] && computerChoice === choices[3] 
     ) {
-        return hasWon = true
+        return outcome = `user` // meaning player won 
     } else  {
-        return hasWon = false 
+        return outcome = `computer`
     }
 }
 
 
-hasWon = true
 
-function dealingDamage(hasWon,nobodyWon) {
-    if (hasWon === true) {
-        playerHp -= 5
-        return playerHp
-    } else if (hasWon === false) {
+
+function dealingDamage(compareResult) {
+    if (compareResult === `user`) {
         computerHp -= 5
         return computerHp
-    } else if (nobodyWon === true) {
+    } else if (compareResult === `computer`) {
+        playerHp -= 5
+        return playerHp
+    } else {
         return
     }
 }
 
-console.log(playerHp)
-
-console.log(dealingDamage())
 
 
+function healDamage(compareresults) {
+    if (compareResults === `user`) {
 
-function healDamage() {
+    }
 
 }
 
@@ -106,5 +104,5 @@ function effectHalt () {
 
 function play() {
 
-    
+
 }
