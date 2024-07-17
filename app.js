@@ -7,63 +7,99 @@
 let outcome // `user`, `computer`, `draw` 
 // let playerHp = 30
 // let computerHp = 20
-// Cached Element //
+
+// --------------- Constants --------------- //
+
+const CHOICES = [
+    {id:0, name: "Rock", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
+    {id:1, name: "Rock", type: "Heal", effect: 5, description: "Heal 5 HP"},
+    {id:2, name: "Paper", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
+    {id:3, name: "Paper", type: "Heal", effect: 5, description: "Heal 5 HP"},
+    {id:4, name: "Scissor", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
+    {id:5, name: "Scissor", type: "Heal", effect: 5, description: "Heal 5 HP"},
+    {id:6, name: "Spock", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
+    {id:7, name: "Spock", type: "Heal", effect: 5, description: "Heal 5 HP"},
+    {id:8, name: "Lizard", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
+    {id:9, name: "Lizard", type: "Heal", effect: 5, description: "Heal 5 HP"},
+]
+
+// --------------- Cached DOM Elements ---------- //
+
 const computerCardDisplay = document.querySelector(`#computer-cards`)
 const userCardDisplay = document.querySelector(`#user-cards`)
+const compareZoneDisplay = document.querySelector(`#compare-zone`)
 
 
 // let choices = ["Rock", "Paper", "Scissor", "Spock", "Lizard" ]
 // let effect = ["Heal 5 HP", "Deal 5 HP"];
 // let deck = [];
 
+// --------------- Variables --------------- //
+
 let computerHidden
-let playerDeck
 let compareZone
 let name
+let game = {
+        playerHp: 30,
+        computerHp: 20,
+        playerCard: null,
+        computerCard: null,
+        deck: createDeck(5),
+        playerHand: [],
+        computerHand: [],  
+    }
 
-function init () {
 
+
+// --------------- Start Game --------------- //
+startGame()
+
+function startGame() {
+    game = {
+        playerHp: 30,
+        computerHp: 20,
+        playerCard: null,
+        computerCard: null,
+        deck: createDeck(5),
+        playerHand: [],
+        computerHand: [],  
+    }
+    
+    game.playerHand = createHand()
+    game.computerHand = createHand()
+
+    render()
 }
 
-const game = {
-    playerHp :30,
-    computerHp :20,
-    choices: [
-        {name: "Rock", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Rock", type: "Heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Paper", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Paper", type: "Heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Scissor", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Scissor", type: "Heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Spock", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Spock", type: "Heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Lizard", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Lizard", type: "Heal", effect: 5, description: "Heal 5 HP"},
-    ],
+
+function createHand() {
+    let hand = []
+
+    for (let i = 0; i < 5; i++){
+        hand.push(game.deck.pop())
+    }
+
+    return hand
 }
-
-
-let deck = createDeck(5)
 
 
 function createDeck (numberCopies) {
 
     let deckArray = [];
 
-    for (let choiceIndex = 0; choiceIndex < game.choices.length; choiceIndex ++ ) {
+    for (let choiceIndex = 0; choiceIndex < CHOICES.length; choiceIndex ++ ) {
         for (let cardCounter = 0; cardCounter < numberCopies; cardCounter ++) {
-            deckArray.push(game.choices[choiceIndex])
+            deckArray.push(CHOICES[choiceIndex])
         }
     }
-    return deckArray
+    return shuffleDeck(deckArray)
 }
 
 
 
 //this method is called the Fisher Yates shuffle
 
-function shuffle (deckArray) {
-    
+function shuffleDeck(deckArray) {
     for (let i = 0 ; i < deckArray.length; i ++){
         // this is a loop that goes through the whole array 
         let temp = deckArray[i];
@@ -81,63 +117,91 @@ function shuffle (deckArray) {
 // shuffle (deck) // this has shuffled the deck for play
 
 
-function startGame () {
-    for (i =0; i <10; i++){
-        console.log(deck[i])
-    }
-    let computerHidden = []
-    for (i=0 ; i<5; i++ ) {
-        computerHidden.push(deck[i]) 
-        deck.splice(i,1)
-    } 
-    let playerDeck = []
-    for (i =0; i<5; i++){
-        playerDeck.push(deck[i])
-        deck.splice(i,1)
-    } 
+// function startGame () {
+//     for (i =0; i <10; i++){
+//         console.log(deck[i])
+//     }
+//     let computerHidden = []
+//     for (i=0 ; i<5; i++ ) {
+//         computerHidden.push(deck[i]) 
+//         deck.splice(i,1)
+//     } 
+//     let playerHand = []
+//     for (i =0; i<5; i++){
+//         playerHand.push(deck[i])
+//         deck.splice(i,1)
+//     } 
     
-    render (computerHidden,playerDeck)
+//     render (computerHidden,playerHand)
 
     
-    // let playerDeck =[]
-    // for (i=0; i<5; i++) {
-    //     playerDeck = deck.shift()
-    //     card = deck.shift
-    //     // cardImg.src = "./card/" + card + ".png"
-    // }
-    // console.log(deck)
-    console.log(`computer deck:`, computerHidden)
-    // console.log(`playerDeck:`, playerDeck )
-    // console.log(deck)
+//     // let playerHand =[]
+//     // for (i=0; i<5; i++) {
+//     //     playerHand = deck.shift()
+//     //     card = deck.shift
+//     //     // cardImg.src = "./card/" + card + ".png"
+//     // }
+//     // console.log(deck)
+//     // console.log(`computer deck:`, computerHidden)
+//     // console.log(`playerHand:`, playerHand )
+//     // console.log(deck)
+// }
+
+function render (computerDeck, playerHand) {
+    renderHands()
+    renderCompareZone()
+    // render hp
+    // render message
 }
 
-function render (computerDeck, playerDeck) {
-    console.log(computerDeck)
-    for (i = 0; i <computerDeck.length; i++){
-        const newCard = document.createElement("img")
-        newCard.src = `./card/CardBack.png`
-        computerCardDisplay.appendChild(newCard)
-    }
-    for (i =0; i<playerDeck.length; i++){
-        const userCard = document.createElement("img")
-        userCard.src = `./card/${playerDeck[i].name}${playerDeck[i].type}.png` 
-        userCardDisplay.appendChild(userCard)
+function renderHands() {
+    computerCardDisplay.innerHTML = ''
+    game.computerHand.forEach((card, i) => {
+        const newCardEl = document.createElement("img")
+        newCardEl.src = `./card/CardBack.png`
+        computerCardDisplay.appendChild(newCardEl)
+    })
 
-    }
-}
+    userCardDisplay.innerHTML = ''
+    game.playerHand.forEach((card, i) => {
+        const newCardEl = document.createElement("img")
+        newCardEl.src = `./card/${card.name}${card.type}.png`
+        newCardEl.addEventListener(`click`,() => handleClick(card))
+        userCardDisplay.appendChild(newCardEl)
+    })
+}   
 
-shuffle (deck)
-startGame()
-
-
-function getName(card) { // this gets the name of the card in the compare zone
-    let name = card[0].name /// this gets the name of the card in the compare zone 
+function renderCompareZone() {
+    const playerCardEl = document.createElement("img")
+    playerCardEl.src = `./card/${game.playerCard.name}${game.playerCard.type}.png`
     
+    const computerCardEl = document.createElement("img")
+    computerCardEl.src = `./card/${game.computerCard.name}${game.computerCard.type}.png`
+    
+    compareZoneDisplay.appendChild(playerCardEl, computerCardEl )
 }
 
-function getType (card) {
-    let type =card[0].type
+
+function handleClick (card) {
+
+    // update player card state
+    game.playerCard = card
+    // game.playerHand = game.playerHand.filter(card => card.id !== card.id)
+    game.playerHand = game.playerHand.filter((playCard) => playCard.id !== card.id);
+    // pick random card for computer
+    const i = Math.floor(Math.random() * game.computerHand.length)
+    const computerCard = game.computerHand[i]
+    game.computerCard = computerCard
+    game.computerHand = game.computerHand.filter((compCard) => compCard.id !== computerCard.id)
+
+    // compare the two cards
+    
+
+
+    render()
 }
+
+
 
 
 //after shuffled then each player will pick a card until hand = 5
@@ -147,21 +211,30 @@ function compare () {
     if (playerChoice === computerChoice) {
         return outcome = `draw` // meaning nobody won
     } else if (
-        playerChoice === choices[0] && computerChoice === choices[2] || 
-        playerChoice === choices[0] && computerChoice === choices[4] ||
-        playerChoice === choices[1] && computerChoice === choices[0] ||
-        playerChoice === choices[1] && computerChoice === choices[3] ||
-        playerChoice === choices[2] && computerChoice === choices[1] ||
-        playerChoice === choices[2] && computerChoice === choices[4] ||
-        playerChoice === choices[3] && computerChoice === choices[0] ||
-        playerChoice === choices[3] && computerChoice === choices[2] ||
-        playerChoice === choices[4] && computerChoice === choices[1] ||
-        playerChoice === choices[4] && computerChoice === choices[3] 
+        playerChoice === CHOICES[0] && computerChoice === CHOICES[2] || 
+        playerChoice === CHOICES[0] && computerChoice === CHOICES[4] ||
+        playerChoice === CHOICES[1] && computerChoice === CHOICES[0] ||
+        playerChoice === CHOICES[1] && computerChoice === CHOICES[3] ||
+        playerChoice === CHOICES[2] && computerChoice === CHOICES[1] ||
+        playerChoice === CHOICES[2] && computerChoice === CHOICES[4] ||
+        playerChoice === CHOICES[3] && computerChoice === CHOICES[0] ||
+        playerChoice === CHOICES[3] && computerChoice === CHOICES[2] ||
+        playerChoice === CHOICES[4] && computerChoice === CHOICES[1] ||
+        playerChoice === CHOICES[4] && computerChoice === CHOICES[3] 
     ) {
         return outcome = `user` // meaning player won 
     } else  {
         return outcome = `computer` // meaning computer won
     }
+}
+
+function getName(card) { // this gets the name of the card in the compare zone
+    let name = card[0].name /// this gets the name of the card in the compare zone 
+    
+}
+
+function getType (card) {
+    let type =card[0].type
 }
 
 function checkDamageCard () {
