@@ -7,6 +7,9 @@
 let outcome // `user`, `computer`, `draw` 
 // let playerHp = 30
 // let computerHp = 20
+// Cached Element //
+const computerCardDisplay = document.querySelector(`#computer-cards`)
+
 
 // let choices = ["Rock", "Paper", "Scissor", "Spock", "Lizard" ]
 // let effect = ["Heal 5 HP", "Deal 5 HP"];
@@ -44,54 +47,78 @@ let deck = createDeck(5)
 
 function createDeck (numberCopies) {
 
-    let deck = [];
+    let deckArray = [];
 
     for (let choiceIndex = 0; choiceIndex < game.choices.length; choiceIndex ++ ) {
         for (let cardCounter = 0; cardCounter < numberCopies; cardCounter ++) {
-            deck.push(game.choices[choiceIndex])
+            deckArray.push(game.choices[choiceIndex])
         }
     }
-    return deck
+    return deckArray
 }
 
 
 
 //this method is called the Fisher Yates shuffle
 
-function shuffle (deck) {
+function shuffle (deckArray) {
     
-    for (let i = 0 ; i < deck.length; i ++){
+    for (let i = 0 ; i < deckArray.length; i ++){
         // this is a loop that goes through the whole array 
-        let temp = deck[i];
+        let temp = deckArray[i];
         //this save the current item to a temp variable 
-        let r = Math.floor(Math.random() * deck.length);
+        let r = Math.floor(Math.random() * deckArray.length);
         //generate a random number in the range of the array 
-        deck[i] = deck[r];
+        deckArray[i] = deckArray[r];
         //replace the current item with the random item 
-        deck[r] = temp;
+        deckArray[r] = temp;
         //replace the random item with the current item as temp 
     }
-    return deck
+    return deckArray
 }
 
 // shuffle (deck) // this has shuffled the deck for play
 
 
 function startGame () {
+    for (i =0; i <10; i++){
+        console.log(deck[i])
+    }
     let computerHidden = []
     for (i=0 ; i<5; i++ ) {
-        computerHidden = deck.shift()
-        card = deck.shift()
-        cardImg.src = "./card/cardBack.png"
-    }
-    let playerDeck =[]
-    for (i=0; i<5; i++) {
-        playerDeck = deck.shift()
-        card = deck.shift
-        cardImg.src = "./card/" + card + ".png"
-    }
+        computerHidden.push(deck[i]) 
+        deck.splice(i,1)
+    
+        // cardImg.src = "./card/cardBack.png"
+    } 
+    
+    render (computerHidden)
 
+    
+    // let playerDeck =[]
+    // for (i=0; i<5; i++) {
+    //     playerDeck = deck.shift()
+    //     card = deck.shift
+    //     // cardImg.src = "./card/" + card + ".png"
+    // }
+    // console.log(deck)
+    console.log(`computer deck:`, computerHidden)
+    // console.log(`playerDeck:`, playerDeck )
+    // console.log(deck)
 }
+
+function render (computerDeck) {
+    console.log(computerDeck)
+    for (i = 0; i <computerDeck.length; i++){
+        const newCard = document.createElement("img")
+        newCard.src = `./card/CardBack.png`
+        computerCardDisplay.appendChild(newCard)
+    }
+}
+
+shuffle (deck)
+startGame()
+
 
 function getName(card) { // this gets the name of the card in the compare zone
     let name = card[0].name /// this gets the name of the card in the compare zone 
