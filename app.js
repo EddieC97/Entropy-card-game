@@ -12,93 +12,61 @@ let outcome // `user`, `computer`, `draw`
 // let effect = ["Heal 5 HP", "Deal 5 HP"];
 // let deck = [];
 
-// for (i =0; i < 5 ; i ++) {
-//     for (choiceCounter=0; choiceCounter < choices.length; choiceCounter ++) {
-//         for (effectCounter=0; effectCounter < effect.length; effectCounter++) {
-//             deck.push(choices[choiceCounter] + ": " + effect[effectCounter])
-//         }
-//     }
-// }
+
 
 const game = {
     playerHp :30,
     computerHp :20,
     choices: [
         {name: "Rock", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Rock", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Rock", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Rock", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Rock", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Rock", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Rock", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Rock", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Rock", type: "heal", effect: 5, description: "Heal 5 HP"},
         {name: "Rock", type: "heal", effect: 5, description: "Heal 5 HP"},
         {name: "Paper", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Paper", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Paper", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Paper", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Paper", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Paper", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Paper", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Paper", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Paper", type: "heal", effect: 5, description: "Heal 5 HP"},
         {name: "Paper", type: "heal", effect: 5, description: "Heal 5 HP"},
         {name: "Scissor", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Scissor", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Scissor", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Scissor", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Scissor", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Scissor", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Scissor", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Scissor", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Scissor", type: "heal", effect: 5, description: "Heal 5 HP"},
         {name: "Scissor", type: "heal", effect: 5, description: "Heal 5 HP"},
         {name: "Spock", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Spock", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Spock", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Spock", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Spock", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Spock", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Spock", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Spock", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Spock", type: "heal", effect: 5, description: "Heal 5 HP"},
         {name: "Spock", type: "heal", effect: 5, description: "Heal 5 HP"},
         {name: "Lizard", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Lizard", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Lizard", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Lizard", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Lizard", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
         {name: "Lizard", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Lizard", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Lizard", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Lizard", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Lizard", type: "heal", effect: 5, description: "Heal 5 HP"},
-    ]
-    
+    ],
 }
 
+let deck = createDeck(5)
 
+
+function createDeck (numberCopies) {
+
+    let deck = [];
+
+    for (let choiceIndex = 0; choiceIndex < game.choices.length; choiceIndex ++ ) {
+        for (let cardCounter = 0; cardCounter < numberCopies; cardCounter ++) {
+            deck.push(game.choices[choiceIndex])
+        }
+    }
+    return deck
+}
 
 
 
 //this method is called the Fisher Yates shuffle
 
-function shuffle () {
+function shuffle (deck) {
     
-    for (let i = 0 ; i < game.choices.length; i ++){
+    for (let i = 0 ; i < deck.length; i ++){
         // this is a loop that goes through the whole array 
-        let temp = game.choices[i];
+        let temp = deck[i];
         //this save the current item to a temp variable 
-        let r = Math.floor(Math.random() * game.choices.length);
+        let r = Math.floor(Math.random() * deck.length);
         //generate a random number in the range of the array 
-        game.choices[i] = game.choices[r];
+        deck[i] = deck[r];
         //replace the current item with the random item 
-        game.choices[r] = temp;
+        deck[r] = temp;
         //replace the random item with the current item as temp 
     }
-    return game.choices
+    return deck
 }
+
+shuffle (deck) // this has shuffled the deck for play
 
 
 
