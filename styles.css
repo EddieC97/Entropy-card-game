@@ -25,8 +25,12 @@ body {
 }
 
 #compare-zone {
-    background: red;
-    height: 200px;
+    
+    height: 450px;
+    Width: 300px;
+    margin:auto;
+    border: 2px solid black;
+
     
 
 
