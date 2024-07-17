@@ -25,15 +25,26 @@ body {
 }
 
 #compare-zone {
-    
     height: 450px;
     Width: 300px;
     margin:auto;
     border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
 
-    
+}
 
+#message {
+    height: 100px;
+    width:100px;
+    border:2px solid black;
+}
 
+#compare-zone > img {
+    height: 100px;
+    Width:100px;
 }
 
 #Reset {
