@@ -17,3 +17,16 @@ body {
     margin: 5px;
     ;
 }
+
+#End-Turn {
+    width: 100px;
+    height: 50px;
+    font-size:20px;
+}
+
+
+#Reset {
+    width: 100px;
+    height: 50px;
+    font-size:20px;
+}
