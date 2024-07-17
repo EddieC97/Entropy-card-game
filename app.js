@@ -12,7 +12,14 @@ let outcome // `user`, `computer`, `draw`
 // let effect = ["Heal 5 HP", "Deal 5 HP"];
 // let deck = [];
 
+let computerHidden
+let playerDeck
+let compareZone
+let name
 
+function init () {
+
+}
 
 const game = {
     playerHp :30,
@@ -30,6 +37,7 @@ const game = {
         {name: "Lizard", type: "heal", effect: 5, description: "Heal 5 HP"},
     ],
 }
+
 
 let deck = createDeck(5)
 
@@ -66,8 +74,33 @@ function shuffle (deck) {
     return deck
 }
 
-shuffle (deck) // this has shuffled the deck for play
+// shuffle (deck) // this has shuffled the deck for play
 
+
+function startGame () {
+    let computerHidden = []
+    for (i=0 ; i<5; i++ ) {
+        computerHidden = deck.shift()
+        card = deck.shift()
+        cardImg.src = "./card/cardBack.png"
+    }
+    let playerDeck =[]
+    for (i=0; i<5; i++) {
+        playerDeck = deck.shift()
+        card = deck.shift
+        cardImg.src = "./card/" + card + ".png"
+    }
+
+}
+
+function getName(card) { // this gets the name of the card in the compare zone
+    let name = card[0].name /// this gets the name of the card in the compare zone 
+    
+}
+
+function getType (card) {
+    let type =card[0].type
+}
 
 
 //after shuffled then each player will pick a card until hand = 5

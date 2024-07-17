@@ -8,14 +8,14 @@ body {
     height: 170px ;
     width: 100px;
     margin: 5px;
-    border: red;
+    
 }
 
 #user-cards img {
     height: 170px ;
     width: 100px;
     margin: 5px;
-    ;
+    
 }
 
 #End-Turn {
@@ -35,7 +35,6 @@ body {
 
 
 }
-
 
 #Reset {
     width: 100px;
