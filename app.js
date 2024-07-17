@@ -9,6 +9,7 @@ let outcome // `user`, `computer`, `draw`
 // let computerHp = 20
 // Cached Element //
 const computerCardDisplay = document.querySelector(`#computer-cards`)
+const userCardDisplay = document.querySelector(`#user-cards`)
 
 
 // let choices = ["Rock", "Paper", "Scissor", "Spock", "Lizard" ]
@@ -28,16 +29,16 @@ const game = {
     playerHp :30,
     computerHp :20,
     choices: [
-        {name: "Rock", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Rock", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Paper", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Paper", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Scissor", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Scissor", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Spock", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Spock", type: "heal", effect: 5, description: "Heal 5 HP"},
-        {name: "Lizard", type: "dmg", effect: -5, description: "Deal 5 damage to your opponent"},
-        {name: "Lizard", type: "heal", effect: 5, description: "Heal 5 HP"},
+        {name: "Rock", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
+        {name: "Rock", type: "Heal", effect: 5, description: "Heal 5 HP"},
+        {name: "Paper", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
+        {name: "Paper", type: "Heal", effect: 5, description: "Heal 5 HP"},
+        {name: "Scissor", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
+        {name: "Scissor", type: "Heal", effect: 5, description: "Heal 5 HP"},
+        {name: "Spock", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
+        {name: "Spock", type: "Heal", effect: 5, description: "Heal 5 HP"},
+        {name: "Lizard", type: "Damage", effect: -5, description: "Deal 5 damage to your opponent"},
+        {name: "Lizard", type: "Heal", effect: 5, description: "Heal 5 HP"},
     ],
 }
 
@@ -88,11 +89,14 @@ function startGame () {
     for (i=0 ; i<5; i++ ) {
         computerHidden.push(deck[i]) 
         deck.splice(i,1)
-    
-        // cardImg.src = "./card/cardBack.png"
+    } 
+    let playerDeck = []
+    for (i =0; i<5; i++){
+        playerDeck.push(deck[i])
+        deck.splice(i,1)
     } 
     
-    render (computerHidden)
+    render (computerHidden,playerDeck)
 
     
     // let playerDeck =[]
@@ -107,12 +111,18 @@ function startGame () {
     // console.log(deck)
 }
 
-function render (computerDeck) {
+function render (computerDeck, playerDeck) {
     console.log(computerDeck)
     for (i = 0; i <computerDeck.length; i++){
         const newCard = document.createElement("img")
         newCard.src = `./card/CardBack.png`
         computerCardDisplay.appendChild(newCard)
+    }
+    for (i =0; i<playerDeck.length; i++){
+        const userCard = document.createElement("img")
+        userCard.src = `./card/${playerDeck[i].name}${playerDeck[i].type}.png` 
+        userCardDisplay.appendChild(userCard)
+
     }
 }
 
