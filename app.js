@@ -97,16 +97,11 @@ function shuffle () {
         game.choices[r] = temp;
         //replace the random item with the current item as temp 
     }
-    
+    return game.choices
 }
 
-console.log(shuffle())
-// console.log(deck) //this works because the function shuffled hasn't been called
-// //so everything is in order
 
-// shuffle(deck) //this call the functions to shuffle the deck 
 
-// console.log(deck) //this produces a shuffled deck 
 //after shuffled then each player will pick a card until hand = 5
 
 
