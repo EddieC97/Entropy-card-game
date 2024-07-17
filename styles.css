@@ -24,6 +24,14 @@ body {
     font-size:20px;
 }
 
+#compare-zone {
+    background: red;
+    height: 200px;
+    
+
+
+}
+
 
 #Reset {
     width: 100px;
