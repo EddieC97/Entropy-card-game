@@ -59,6 +59,7 @@ const compareZoneDisplay = document.querySelector(`#compare-zone`);
 const messageDisplay = document.querySelector(`#message`);
 const computerHpDisplay = document.querySelector(`#computerHp`);
 const userHpDisplay = document.querySelector(`#userHp`);
+const resetButtonEl = document.querySelector(`#Reset`)
 
 // --------------- Variables --------------- //
 
@@ -93,6 +94,11 @@ function startGame() {
 
   render();
 }
+
+// --------------- Event Listeners --------------- //
+
+resetButtonEl.addEventListener(`click`, startGame)
+
 
 function createHand() {
   let hand = [];
@@ -219,3 +225,7 @@ function handleClick(card) {
   checkForRoundWinner();
   render();
 }
+
+
+
+
