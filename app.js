@@ -117,6 +117,8 @@ const computerCardDisplay = document.querySelector(`#computer-cards`);
 const userCardDisplay = document.querySelector(`#user-cards`);
 const compareZoneDisplay = document.querySelector(`#compare-zone`);
 const messageDisplay = document.querySelector(`#message`);
+const computerHpDisplay = document.querySelector(`#computerHp`)
+const userHpDisplay = document.querySelector(`#userHp`)
 
 // let choices = ["Rock", "Paper", "Scissor", "Spock", "Lizard" ]
 // let effect = ["Heal 5 HP", "Deal 5 HP"];
@@ -204,23 +206,23 @@ function checkForRoundWinner() {
     } else {
       roundWinner = computer;
     }
+    triggerCardType(roundWinner)
   }
 
-  function triggerCardType (winner) {
+function triggerCardType (winner) {
     if (winner === player){
         if (player.choice.type === "Damage") {
             computer.hp -= player.choice.effect
         } else if (player.choice.type === "Heal")
             player.hp += player.choice.effect
-    } (winner === computer) {
+    } else if (winner === computer) {
         if (computer.choice.type === "Damage") {
             player.hp -= computer.choice.effect
-        } else if (computer.choice.type === "Heal")
-            player.hp += computer.choice.effect
+        } else if (computer.choice.type === "Heal") {
+            computer.hp += computer.choice.effect
     }
-    renderHp()
-
   }
+}
 
 // function checkForRoundWinner () {
 //     if (player.choice === computer.choice){
@@ -324,7 +326,12 @@ function renderCompareZone() {
 }
 
 function renderHp() {
-  if (roundWinner === null) return;
+
+computerHpDisplay.textContent = computer.hp
+userHpDisplay.textContent = player.hp
+
+
+  
 }
 
 function renderMessage() {
@@ -346,81 +353,81 @@ function handleClick(card) {
   computer.choice = computerCard;
   computer.hand = computer.hand.filter(
     (compCard) => compCard.id !== computerCard.id
+
+    
   );
-
-  // compare the two cards
-
-  render();
+checkForRoundWinner()
+render();
 }
 
 //after shuffled then each player will pick a card until hand = 5
 
-function getName(card) {
-  // this gets the name of the card in the compare zone
-  let name = card[0].name; /// this gets the name of the card in the compare zone
-}
+// function getName(card) {
+//   // this gets the name of the card in the compare zone
+//   let name = card[0].name; /// this gets the name of the card in the compare zone
+// }
 
-function getType(card) {
-  let type = card[0].type;
-}
+// function getType(card) {
+//   let type = card[0].type;
+// }
 
-function checkDamageCard() {
-  if (compareResult === `user` || compareResult === `computer`) {
-    if (card.ID === `Damage`) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-}
+// function checkDamageCard() {
+//   if (compareResult === `user` || compareResult === `computer`) {
+//     if (card.ID === `Damage`) {
+//       return true;
+//     } else {
+//       return false;
+//     }
+//   }
+// }
 
-function triggerCardEffect(compareResult, checkDamageCard) {
-  if (compareResult === `user`) {
-    if (checkDamageCard === true) {
-      computerHP -= 5;
-      return computerHp;
-    } else {
-      playerHP += 5;
-      return playerHp;
-    }
-  } else if (compareResult === `computer`) {
-    if (checkDamageCard === true) {
-      playerHp -= 5;
-    } else {
-      computerHp += 5;
-      return computerHp;
-    }
-  }
-}
+// function triggerCardEffect(compareResult, checkDamageCard) {
+//   if (compareResult === `user`) {
+//     if (checkDamageCard === true) {
+//       computerHP -= 5;
+//       return computerHp;
+//     } else {
+//       playerHP += 5;
+//       return playerHp;
+//     }
+//   } else if (compareResult === `computer`) {
+//     if (checkDamageCard === true) {
+//       playerHp -= 5;
+//     } else {
+//       computerHp += 5;
+//       return computerHp;
+//     }
+//   }
+// }
 
-function dealingDamage(compareResult) {
-  if (compareResult === `user`) {
-    computerHp -= 5;
-    return computerHp;
-  } else if (compareResult === `computer`) {
-    playerHp -= 5;
-    return playerHp;
-  } else {
-    return;
-  }
-}
+// function dealingDamage(compareResult) {
+//   if (compareResult === `user`) {
+//     computerHp -= 5;
+//     return computerHp;
+//   } else if (compareResult === `computer`) {
+//     playerHp -= 5;
+//     return playerHp;
+//   } else {
+//     return;
+//   }
+// }
 
-function healDamage(compareResult) {
-  if (compareResult === `user`) {
-    playerHp += 5;
-    return playerHp;
-  } else if (compareResult === `computer`) {
-    computerHp += 5;
-    return computerHp;
-  } else {
-    return;
-  }
-}
+// function healDamage(compareResult) {
+//   if (compareResult === `user`) {
+//     playerHp += 5;
+//     return playerHp;
+//   } else if (compareResult === `computer`) {
+//     computerHp += 5;
+//     return computerHp;
+//   } else {
+//     return;
+//   }
+// }
 
-function effectTrigger() {}
+// function effectTrigger() {}
 
-function effectHalt() {
-  return;
-}
+// function effectHalt() {
+//   return;
+// }
 
-function play() {}
+// function play() {}
