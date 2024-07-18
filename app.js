@@ -75,7 +75,7 @@ const CHOICES = [
   startGame();
   
   function startGame() {
-    deck = createDeck(10);
+    deck = createDeck(5);
     roundWinner = null;
   
     player = {
@@ -151,6 +151,8 @@ const CHOICES = [
     return shuffleDeck(deckArray);
   }
   
+
+
   function shuffleDeck(deckArray) {
     for (let i = 0; i < deckArray.length; i++) {
       let temp = deckArray[i];
@@ -257,8 +259,16 @@ const CHOICES = [
     checkForRoundWinner();
     checkHand();
     render();
+    recreateDeck()
     gameWinner()
   }
+
+  function recreateDeck () {
+    if (deckArray = []) {
+        createDeck(5)
+
+    }
+}
   
   
   // function handleClick(card) {
