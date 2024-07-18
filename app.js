@@ -15,7 +15,7 @@ const CHOICES = [
     id: 0,
     name: "Rock",
     type: "Damage",
-    effect: -5,
+    effect: 5,
     description: "Deal 5 damage to your opponent",
   },
   { id: 1, 
@@ -27,7 +27,7 @@ const CHOICES = [
     id: 2,
     name: "Paper",
     type: "Damage",
-    effect: -5,
+    effect: 5,
     description: "Deal 5 damage to your opponent",
   },
   { id: 3, 
@@ -39,7 +39,7 @@ const CHOICES = [
     id: 4,
     name: "Scissor",
     type: "Damage",
-    effect: -5,
+    effect: 5,
     description: "Deal 5 damage to your opponent",
   },
   { id: 5, 
@@ -51,7 +51,7 @@ const CHOICES = [
     id: 6,
     name: "Spock",
     type: "Damage",
-    effect: -5,
+    effect: 5,
     description: "Deal 5 damage to your opponent",
   },
   { id: 7, 
@@ -63,7 +63,7 @@ const CHOICES = [
     id: 8,
     name: "Lizard",
     type: "Damage",
-    effect: -5,
+    effect: 5,
     description: "Deal 5 damage to your opponent",
   },
   { id: 9, 
@@ -194,77 +194,91 @@ function shuffleDeck(deckArray) {
   return deckArray;
 }
 
-// function checkForRoundWinnerAndType() {
-//   const hasPlayerWon = WINNING_COMBOS[player.choice.name].includes(
-//     computer.choice.name
-//   );
+function checkForRoundWinner() {
+    const hasPlayerWon = WINNING_COMBOS[player.choice.name].includes(
+      computer.choice.name
+    );
+  
+    if (hasPlayerWon === true) {
+      roundWinner = player;
+    } else {
+      roundWinner = computer;
+    }
+  }
 
-//   if (hasPlayerWon === true) {
-//     roundWinner = player, player.choice.type;
-//     console.log(roundWinner)
-//   } else {
-//     roundWinner = computer, computer.choice.type;
-//     console.log(roundWinner)
-//   }
+  function triggerCardType (winner) {
+    if (winner === player){
+        if (player.choice.type === "Damage") {
+            computer.hp -= player.choice.effect
+        } else if (player.choice.type === "Heal")
+            player.hp += player.choice.effect
+    } (winner === computer) {
+        if (computer.choice.type === "Damage") {
+            player.hp -= computer.choice.effect
+        } else if (computer.choice.type === "Heal")
+            player.hp += computer.choice.effect
+    }
+    renderHp()
+
+  }
+
+// function checkForRoundWinner () {
+//     if (player.choice === computer.choice){
+//         msg = `you tied`
+//         messageDisplay.textContent = msg
+//     } else if (player.choice.name === "Rock" && 
+//         player.choice.type === "Damage" &&
+//         computer.choice.name === "Scissor" &&
+//         computer.choice.type === "Damage") {
+//             msg = `You won, deal 5HP damage to your opponent`
+//             messageDisplay.textContent = msg
+//     }else if (player.choice.name === "Rock" && 
+//         player.choice.type === "Damage" &&
+//         computer.choice.name === "Scissor" &&
+//         computer.choice.type === "Heal") {
+//             msg =`You won, deal 5HP damage to your opponent`
+//             messageDisplay.textContent = msg
+//     }else if (player.choice.name === "Rock" && 
+//         player.choice.type === "Damage" &&
+//         computer.choice.name === "Lizard" &&
+//         computer.choice.type === "Damage") {
+//             msg = `You won, deal 5HP damage to your opponent`
+//             messageDisplay.textContent = msg
+//     }else if (player.choice.name === "Rock" && 
+//         player.choice.type === "Damage" &&
+//         computer.choice.name === "Lizard" &&
+//         computer.choice.type === "Heal") {
+//             msg = `You won, deal 5HP damage to your opponent`
+//             messageDisplay.textContent = msg
+//     } else if (player.choice.name === "Rock" && 
+//         player.choice.type === "Heal" &&
+//         computer.choice.name === "Scissor" &&
+//         computer.choice.type === "Damage") {
+//             msg = `You won, heal 5HP`
+//             messageDisplay.textContent = msg
+//     }else if (player.choice.name === "Rock" && 
+//         player.choice.type === "Heal" &&
+//         computer.choice.name === "Scissor" &&
+//         computer.choice.type === "Heal") {
+//             msg = `You won, heal 5HP`
+//             messageDisplay.textContent = msg
+//     }else if (player.choice.name === "Rock" && 
+//         player.choice.type === "Heal" &&
+//         computer.choice.name === "Lizard" &&
+//         computer.choice.type === "Heal") {
+//             msg = `You won, heal 5HP`
+//             messageDisplay.textContent = msg
+//     }else if (player.choice.name === "Rock" && 
+//         player.choice.type === "Heal" &&
+//         computer.choice.name === "Lizard" &&
+//         computer.choice.type === "Heal") {
+//             msg = `You won, heal 5HP`
+//             messageDisplay.textContent = msg
+//     }
+    
 // }
 
-function checkForRoundWinner () {
-    if (player.choice === computer.choice){
-        msg = `you tied`
-        messageDisplay.textContent = msg
-    } else if (player.choice.name === "Rock" && 
-        player.choice.type === "Damage" &&
-        computer.choice.name === "Scissor" &&
-        computer.choice.type === "Damage") {
-            msg = `You won, deal 5HP damage to your opponent`
-            messageDisplay.textContent = msg
-    }else if (player.choice.name === "Rock" && 
-        player.choice.type === "Damage" &&
-        computer.choice.name === "Scissor" &&
-        computer.choice.type === "Heal") {
-            msg =`You won, deal 5HP damage to your opponent`
-            messageDisplay.textContent = msg
-    }else if (player.choice.name === "Rock" && 
-        player.choice.type === "Damage" &&
-        computer.choice.name === "Lizard" &&
-        computer.choice.type === "Damage") {
-            msg = `You won, deal 5HP damage to your opponent`
-            messageDisplay.textContent = msg
-    }else if (player.choice.name === "Rock" && 
-        player.choice.type === "Damage" &&
-        computer.choice.name === "Lizard" &&
-        computer.choice.type === "Heal") {
-            msg = `You won, deal 5HP damage to your opponent`
-            messageDisplay.textContent = msg
-    } else if (player.choice.name === "Rock" && 
-        player.choice.type === "Heal" &&
-        computer.choice.name === "Scissor" &&
-        computer.choice.type === "Damage") {
-            msg = `You won, heal 5HP`
-            messageDisplay.textContent = msg
-    }else if (player.choice.name === "Rock" && 
-        player.choice.type === "Heal" &&
-        computer.choice.name === "Scissor" &&
-        computer.choice.type === "Heal") {
-            msg `You won, heal 5HP`
-            messageDisplay.textContent = msg
-    }else if (player.choice.name === "Rock" && 
-        player.choice.type === "Heal" &&
-        computer.choice.name === "Lizard" &&
-        computer.choice.type === "Heal") {
-            msg `You won, heal 5HP`
-            messageDisplay.textContent = msg
-    }else if (player.choice.name === "Rock" && 
-        player.choice.type === "Heal" &&
-        computer.choice.name === "Lizard" &&
-        computer.choice.type === "Heal") {
-            msg `You won, heal 5HP`
-            messageDisplay.textContent = msg
-    }
-    
-}
-
-checkForRoundWinner()
+// checkForRoundWinner()
 
 // checkForRoundWinnerAndType()
 
