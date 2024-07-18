@@ -194,27 +194,79 @@ function shuffleDeck(deckArray) {
   return deckArray;
 }
 
-function checkForRoundWinnerAndType() {
-  const hasPlayerWon = WINNING_COMBOS[player.choice.name].includes(
-    computer.choice.name
-  );
+// function checkForRoundWinnerAndType() {
+//   const hasPlayerWon = WINNING_COMBOS[player.choice.name].includes(
+//     computer.choice.name
+//   );
 
-  if (hasPlayerWon === true) {
-    roundWinner = player, player.choice.type;
-    console.log(roundWinner)
-  } else {
-    roundWinner = computer, computer.choice.type;
-    console.log(roundWinner)
-  }
-}
+//   if (hasPlayerWon === true) {
+//     roundWinner = player, player.choice.type;
+//     console.log(roundWinner)
+//   } else {
+//     roundWinner = computer, computer.choice.type;
+//     console.log(roundWinner)
+//   }
+// }
 
 function checkForRoundWinner () {
     if (player.choice === computer.choice){
         msg = `you tied`
-    } else if (player.choice === 
+        messageDisplay.textContent = msg
+    } else if (player.choice.name === "Rock" && 
+        player.choice.type === "Damage" &&
+        computer.choice.name === "Scissor" &&
+        computer.choice.type === "Damage") {
+            msg = `You won, deal 5HP damage to your opponent`
+            messageDisplay.textContent = msg
+    }else if (player.choice.name === "Rock" && 
+        player.choice.type === "Damage" &&
+        computer.choice.name === "Scissor" &&
+        computer.choice.type === "Heal") {
+            msg =`You won, deal 5HP damage to your opponent`
+            messageDisplay.textContent = msg
+    }else if (player.choice.name === "Rock" && 
+        player.choice.type === "Damage" &&
+        computer.choice.name === "Lizard" &&
+        computer.choice.type === "Damage") {
+            msg = `You won, deal 5HP damage to your opponent`
+            messageDisplay.textContent = msg
+    }else if (player.choice.name === "Rock" && 
+        player.choice.type === "Damage" &&
+        computer.choice.name === "Lizard" &&
+        computer.choice.type === "Heal") {
+            msg = `You won, deal 5HP damage to your opponent`
+            messageDisplay.textContent = msg
+    } else if (player.choice.name === "Rock" && 
+        player.choice.type === "Heal" &&
+        computer.choice.name === "Scissor" &&
+        computer.choice.type === "Damage") {
+            msg = `You won, heal 5HP`
+            messageDisplay.textContent = msg
+    }else if (player.choice.name === "Rock" && 
+        player.choice.type === "Heal" &&
+        computer.choice.name === "Scissor" &&
+        computer.choice.type === "Heal") {
+            msg `You won, heal 5HP`
+            messageDisplay.textContent = msg
+    }else if (player.choice.name === "Rock" && 
+        player.choice.type === "Heal" &&
+        computer.choice.name === "Lizard" &&
+        computer.choice.type === "Heal") {
+            msg `You won, heal 5HP`
+            messageDisplay.textContent = msg
+    }else if (player.choice.name === "Rock" && 
+        player.choice.type === "Heal" &&
+        computer.choice.name === "Lizard" &&
+        computer.choice.type === "Heal") {
+            msg `You won, heal 5HP`
+            messageDisplay.textContent = msg
+    }
+    
 }
 
-checkForRoundWinnerAndType()
+checkForRoundWinner()
+
+// checkForRoundWinnerAndType()
 
 function render() {
   renderHands();
