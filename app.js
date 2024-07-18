@@ -75,19 +75,19 @@ const CHOICES = [
   startGame();
   
   function startGame() {
-    deck = createDeck(5);
+    deck = createDeck(10);
     roundWinner = null;
   
     player = {
       name: "Player",
-      hp: 30,
+      hp: 20,
       choice: null,
       hand: createHand(),
     };
   
     computer = {
       name: `Computer`,
-      hp: 30,
+      hp: 20,
       choice: null,
       hand: createHand(),
     };
