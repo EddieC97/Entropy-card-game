@@ -100,6 +100,9 @@ function startGame() {
 resetButtonEl.addEventListener(`click`, startGame)
 
 
+// --------------- Functions --------------- //
+
+
 function createHand() {
   let hand = [];
 
@@ -226,6 +229,24 @@ function handleClick(card) {
   render();
 }
 
+function checkHand () {
+if (player.hand.length < 5) {
+    player.hand.push(deck.pop())
+    return player.hand 
+    } 
+if (computer.hand.length < 5) {
+    computer.hand.push(deck.pop())
+    return computer.hand
+    }   
+renderHands()
+}
 
+checkHand()
 
-
+function gameWinner () {
+    if (player.hp < 1) {
+        messageDisplay.textContent = `Computer wins, try again by pressing the reset button`
+    } else if (computer.hp < 1){
+        messageDisplay.textContent = `Player wins, try again by pressing the reset button `
+    }
+}
