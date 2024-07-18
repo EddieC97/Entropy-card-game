@@ -57,6 +57,7 @@ const messageDisplay = document.querySelector(`#message`);
 const computerHpDisplay = document.querySelector(`#computerHp`);
 const userHpDisplay = document.querySelector(`#userHp`);
 const resetButtonEl = document.querySelector(`#Reset`);
+const whatGameButtonEl = document.querySelector(`#whatGame`)
 
 // --------------- Variables --------------- //
 
@@ -97,6 +98,8 @@ function startGame() {
 // --------------- Event Listeners --------------- //
 
 resetButtonEl.addEventListener(`click`, startGame);
+whatGameButtonEl.addEventListener(`click`, whatGame )
+
 
 // --------------- Functions --------------- //
 
@@ -270,20 +273,7 @@ function handleClick(card) {
   gameWinner();
 }
 
-// function handleClick(card) {
-//     player.choice = card;
-//     player.hand = player.hand.filter((playCard) => playCard.id !== card.id);
-//     const i = Math.floor(Math.random() * computer.hand.length);
-//     const computerCard = computer.hand[i];
-//     computer.choice = computerCard;
-//     // computer.hand = computer.hand.filter(
-//       (compCard) => compCard.id !== computerCard.id
-//     );
-//     checkForRoundWinner();
-//     checkHand();
-//     render();
-//     gameWinner()
-//   }
+
 
 function checkHand() {
   if (deck.length === 0) {
@@ -309,3 +299,6 @@ function gameWinner() {
     gameOver = true
   }
 }
+
+
+
