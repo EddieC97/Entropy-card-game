@@ -1,4 +1,9 @@
+*{
+    margin:0;
+    padding:0;
+}
 body {
+    min-height:100vh;
     font-family: 'Times New Roman', Times, serif;
     text-align: center;
 
@@ -51,4 +56,28 @@ body {
     width: 100px;
     height: 50px;
     font-size:20px;
+}
+
+nav{
+    background-color:white;
+    box-shadow: 10px 5px 10px black; /* 3px moving to the right, 3px moving down 10px for how blurry the shadow , last is color */
+}
+
+nav ul {
+    width:100%;
+    list-style:none;
+    display:flex;
+    justify-content: flex-start;
+    align-items:center;
+
+
+}
+
+nav li {
+    height:50px;
+    padding: 0 30px;
+}
+
+nav li:hover{
+    background-color:grey;
 }

@@ -59,7 +59,7 @@ const compareZoneDisplay = document.querySelector(`#compare-zone`);
 const messageDisplay = document.querySelector(`#message`);
 const computerHpDisplay = document.querySelector(`#computerHp`);
 const userHpDisplay = document.querySelector(`#userHp`);
-const resetButtonEl = document.querySelector(`#Reset`)
+const resetButtonEl = document.querySelector(`#Reset`);
 
 // --------------- Variables --------------- //
 
@@ -80,14 +80,14 @@ function startGame() {
 
   player = {
     name: "Player",
-    hp: 30,
+    hp: 5,
     choice: null,
     hand: createHand(),
   };
 
   computer = {
     name: `Computer`,
-    hp: 20,
+    hp: 5,
     choice: null,
     hand: createHand(),
   };
@@ -97,11 +97,9 @@ function startGame() {
 
 // --------------- Event Listeners --------------- //
 
-resetButtonEl.addEventListener(`click`, startGame)
-
+resetButtonEl.addEventListener(`click`, startGame);
 
 // --------------- Functions --------------- //
-
 
 function createHand() {
   let hand = [];
@@ -144,8 +142,10 @@ function checkForRoundWinner() {
 
   if (hasPlayerWon === true) {
     roundWinner = player;
+    
   } else {
     roundWinner = computer;
+    
   }
   triggerCardType(roundWinner);
 }
@@ -226,27 +226,45 @@ function handleClick(card) {
     (compCard) => compCard.id !== computerCard.id
   );
   checkForRoundWinner();
+  checkHand();
   render();
+  gameWinner()
 }
 
-function checkHand () {
-if (player.hand.length < 5) {
-    player.hand.push(deck.pop())
-    return player.hand 
-    } 
-if (computer.hand.length < 5) {
-    computer.hand.push(deck.pop())
-    return computer.hand
-    }   
-renderHands()
+
+// function handleClick(card) {
+//     player.choice = card;
+//     player.hand = player.hand.filter((playCard) => playCard.id !== card.id);
+//     const i = Math.floor(Math.random() * computer.hand.length);
+//     const computerCard = computer.hand[i];
+//     computer.choice = computerCard;
+//     // computer.hand = computer.hand.filter(
+//       (compCard) => compCard.id !== computerCard.id
+//     );
+//     checkForRoundWinner();
+//     checkHand();
+//     render();
+//     gameWinner()
+//   }
+
+function checkHand() {
+  if (player.hand.length < 5) {
+    player.hand.push(deck.pop());
+  }
+  if (computer.hand.length < 5) {
+    computer.hand.push(deck.pop());
+  }
+  renderHands();
 }
 
-checkHand()
 
-function gameWinner () {
-    if (player.hp < 1) {
-        messageDisplay.textContent = `Computer wins, try again by pressing the reset button`
-    } else if (computer.hp < 1){
-        messageDisplay.textContent = `Player wins, try again by pressing the reset button `
-    }
+
+function gameWinner() {
+  if (player.hp < 1) {
+    messageDisplay.textContent = `Computer wins, try again by pressing the reset button`;
+    newCardEl.removeEventListener(`click`)
+  } else if (computer.hp < 1) {
+    messageDisplay.textContent = `Player wins, try again by pressing the reset button `;
+    newCardEl.removeEventListener(`click`)
+  }
 }
