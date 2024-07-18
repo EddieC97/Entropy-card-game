@@ -58,6 +58,16 @@ body {
     font-size:20px;
 }
 
+#whatGame {
+    Height:50px;
+    Width:200px;
+}
+
+#howGame {
+    Height:50px;
+    Width: 200px;
+}
+
 nav{
     background-color:white;
     box-shadow: 10px 5px 10px black; /* 3px moving to the right, 3px moving down 10px for how blurry the shadow , last is color */
@@ -69,6 +79,7 @@ nav ul {
     display:flex;
     justify-content: flex-start;
     align-items:center;
+    gap:10px;
 
 
 }

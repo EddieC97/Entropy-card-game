@@ -2,45 +2,45 @@
 
 const CHOICES = [
   {
-    id: 0,
+    
     name: "Rock",
     type: "Damage",
     effect: 5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 1, name: "Rock", type: "Heal", effect: 5, description: "Heal 5 HP" },
+  { name: "Rock", type: "Heal", effect: 5, description: "Heal 5 HP" },
   {
-    id: 2,
+    
     name: "Paper",
     type: "Damage",
     effect: 5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 3, name: "Paper", type: "Heal", effect: 5, description: "Heal 5 HP" },
+  { name: "Paper", type: "Heal", effect: 5, description: "Heal 5 HP" },
   {
-    id: 4,
+    
     name: "Scissor",
     type: "Damage",
     effect: 5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 5, name: "Scissor", type: "Heal", effect: 5, description: "Heal 5 HP" },
+  {  name: "Scissor", type: "Heal", effect: 5, description: "Heal 5 HP" },
   {
-    id: 6,
+    
     name: "Spock",
     type: "Damage",
     effect: 5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 7, name: "Spock", type: "Heal", effect: 5, description: "Heal 5 HP" },
+  { name: "Spock", type: "Heal", effect: 5, description: "Heal 5 HP" },
   {
-    id: 8,
+    
     name: "Lizard",
     type: "Damage",
     effect: 5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 9, name: "Lizard", type: "Heal", effect: 5, description: "Heal 5 HP" },
+  { name: "Lizard", type: "Heal", effect: 5, description: "Heal 5 HP" },
 ];
 
 const WINNING_COMBOS = {
@@ -111,12 +111,41 @@ function createHand() {
   return hand;
 }
 
+  // Object.assign(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+        // Create a shallow copy of each card from the CHOICES array, and combine with the cardId object above. 
+        // You then push this new object, cardCopy, into the deckArray.
+
 function createDeck(numberCopies) {
   let deckArray = [];
 
   for (let choiceIndex = 0; choiceIndex < CHOICES.length; choiceIndex++) {
     for (let cardCounter = 0; cardCounter < numberCopies; cardCounter++) {
-      deckArray.push(CHOICES[choiceIndex]);
+        //00 --> Rock/Damage [0] Card Copy Number [0]
+        //01 -->Rock/Damage [0] Card Copy Number [1]
+        //02
+        //03
+        //04
+        //10
+        //11
+        //12
+        //13
+        //14
+
+        //1. Create an object with a unique id 
+        //Generate ID           Original Card Index    copied card index
+        //    /                         /                 /
+        let cardId = { id: Number(`${choiceIndex}${cardCounter}`) }
+      
+        //2. Take the object and and copy its properties into a target object (The card you are copying)
+         // copied card               generated card with ID     original card
+        //      /                        /                       /
+        let cardCopy = Object.assign(cardId, CHOICES[choiceIndex] )
+
+        // 3. Take the copied cards and push them into the deckArray
+        // Final deck      copied card
+        //    /               /
+        deckArray.push(cardCopy);
+      
     }
   }
   return shuffleDeck(deckArray);
