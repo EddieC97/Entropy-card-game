@@ -1,5 +1,3 @@
-
-
 // --------------- Constants --------------- //
 
 const CHOICES = [
@@ -10,11 +8,7 @@ const CHOICES = [
     effect: 5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 1, 
-    name: "Rock", 
-    type: "Heal", 
-    effect: 5, 
-    description: "Heal 5 HP" },
+  { id: 1, name: "Rock", type: "Heal", effect: 5, description: "Heal 5 HP" },
   {
     id: 2,
     name: "Paper",
@@ -22,11 +16,7 @@ const CHOICES = [
     effect: 5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 3, 
-    name: "Paper", 
-    type: "Heal", 
-    effect: 5, 
-    description: "Heal 5 HP" },
+  { id: 3, name: "Paper", type: "Heal", effect: 5, description: "Heal 5 HP" },
   {
     id: 4,
     name: "Scissor",
@@ -34,11 +24,7 @@ const CHOICES = [
     effect: 5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 5, 
-    name: "Scissor", 
-    type: "Heal", 
-    effect: 5, 
-    description: "Heal 5 HP" },
+  { id: 5, name: "Scissor", type: "Heal", effect: 5, description: "Heal 5 HP" },
   {
     id: 6,
     name: "Spock",
@@ -46,11 +32,7 @@ const CHOICES = [
     effect: 5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 7, 
-    name: "Spock", 
-    type: "Heal", 
-    effect: 5, 
-    description: "Heal 5 HP" },
+  { id: 7, name: "Spock", type: "Heal", effect: 5, description: "Heal 5 HP" },
   {
     id: 8,
     name: "Lizard",
@@ -58,11 +40,7 @@ const CHOICES = [
     effect: 5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 9, 
-    name: "Lizard", 
-    type: "Heal", 
-    effect: 5, 
-    description: "Heal 5 HP" },
+  { id: 9, name: "Lizard", type: "Heal", effect: 5, description: "Heal 5 HP" },
 ];
 
 const WINNING_COMBOS = {
@@ -73,17 +51,14 @@ const WINNING_COMBOS = {
   Lizard: ["Spock", "Paper"],
 };
 
-
-
 // --------------- Cached DOM Elements ---------- //
 
 const computerCardDisplay = document.querySelector(`#computer-cards`);
 const userCardDisplay = document.querySelector(`#user-cards`);
 const compareZoneDisplay = document.querySelector(`#compare-zone`);
 const messageDisplay = document.querySelector(`#message`);
-const computerHpDisplay = document.querySelector(`#computerHp`)
-const userHpDisplay = document.querySelector(`#userHp`)
-
+const computerHpDisplay = document.querySelector(`#computerHp`);
+const userHpDisplay = document.querySelector(`#userHp`);
 
 // --------------- Variables --------------- //
 
@@ -101,7 +76,7 @@ startGame();
 function startGame() {
   deck = createDeck(5);
   roundWinner = null;
-    
+
   player = {
     name: "Player",
     hp: 30,
@@ -140,59 +115,51 @@ function createDeck(numberCopies) {
   return shuffleDeck(deckArray);
 }
 
-
-
 function shuffleDeck(deckArray) {
   for (let i = 0; i < deckArray.length; i++) {
-
     let temp = deckArray[i];
- 
+
     let r = Math.floor(Math.random() * deckArray.length);
 
     deckArray[i] = deckArray[r];
 
     deckArray[r] = temp;
-
   }
   return deckArray;
 }
 
 function checkForRoundWinner() {
-    const hasPlayerWon = WINNING_COMBOS[player.choice.name].includes(
-      computer.choice.name
-    );
-  
-    if (hasPlayerWon === true) {
-      roundWinner = player;
-    } else {
-      roundWinner = computer;
-    }
-    triggerCardType(roundWinner)
-  }
+  const hasPlayerWon = WINNING_COMBOS[player.choice.name].includes(
+    computer.choice.name
+  );
 
-function triggerCardType (winner) {
-    if (winner === player){
-        if (player.choice.type === "Damage") {
-            computer.hp -= player.choice.effect
-        } else if (player.choice.type === "Heal")
-            player.hp += player.choice.effect
-    } else if (winner === computer) {
-        if (computer.choice.type === "Damage") {
-            player.hp -= computer.choice.effect
-        } else if (computer.choice.type === "Heal") {
-            computer.hp += computer.choice.effect
+  if (hasPlayerWon === true) {
+    roundWinner = player;
+  } else {
+    roundWinner = computer;
+  }
+  triggerCardType(roundWinner);
+}
+
+function triggerCardType(winner) {
+  if (winner === player) {
+    if (player.choice.type === "Damage") {
+      computer.hp -= player.choice.effect;
+    } else if (player.choice.type === "Heal") player.hp += player.choice.effect;
+  } else if (winner === computer) {
+    if (computer.choice.type === "Damage") {
+      player.hp -= computer.choice.effect;
+    } else if (computer.choice.type === "Heal") {
+      computer.hp += computer.choice.effect;
     }
   }
 }
-
-
 
 function render() {
   renderHands();
   renderCompareZone();
   renderHp();
   renderMessage();
-
 }
 
 function renderHands() {
@@ -228,12 +195,8 @@ function renderCompareZone() {
 }
 
 function renderHp() {
-
-computerHpDisplay.textContent = computer.hp
-userHpDisplay.textContent = player.hp
-
-
-  
+  computerHpDisplay.textContent = computer.hp;
+  userHpDisplay.textContent = player.hp;
 }
 
 function renderMessage() {
@@ -253,7 +216,6 @@ function handleClick(card) {
   computer.hand = computer.hand.filter(
     (compCard) => compCard.id !== computerCard.id
   );
-checkForRoundWinner()
-render();
+  checkForRoundWinner();
+  render();
 }
-
