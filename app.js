@@ -18,7 +18,11 @@ const CHOICES = [
     effect: -5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 1, name: "Rock", type: "Heal", effect: 5, description: "Heal 5 HP" },
+  { id: 1, 
+    name: "Rock", 
+    type: "Heal", 
+    effect: 5, 
+    description: "Heal 5 HP" },
   {
     id: 2,
     name: "Paper",
@@ -26,7 +30,11 @@ const CHOICES = [
     effect: -5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 3, name: "Paper", type: "Heal", effect: 5, description: "Heal 5 HP" },
+  { id: 3, 
+    name: "Paper", 
+    type: "Heal", 
+    effect: 5, 
+    description: "Heal 5 HP" },
   {
     id: 4,
     name: "Scissor",
@@ -34,7 +42,11 @@ const CHOICES = [
     effect: -5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 5, name: "Scissor", type: "Heal", effect: 5, description: "Heal 5 HP" },
+  { id: 5, 
+    name: "Scissor", 
+    type: "Heal", 
+    effect: 5, 
+    description: "Heal 5 HP" },
   {
     id: 6,
     name: "Spock",
@@ -42,7 +54,11 @@ const CHOICES = [
     effect: -5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 7, name: "Spock", type: "Heal", effect: 5, description: "Heal 5 HP" },
+  { id: 7, 
+    name: "Spock", 
+    type: "Heal", 
+    effect: 5, 
+    description: "Heal 5 HP" },
   {
     id: 8,
     name: "Lizard",
@@ -50,7 +66,11 @@ const CHOICES = [
     effect: -5,
     description: "Deal 5 damage to your opponent",
   },
-  { id: 9, name: "Lizard", type: "Heal", effect: 5, description: "Heal 5 HP" },
+  { id: 9, 
+    name: "Lizard", 
+    type: "Heal", 
+    effect: 5, 
+    description: "Heal 5 HP" },
 ];
 
 const WINNING_COMBOS = {
@@ -174,17 +194,27 @@ function shuffleDeck(deckArray) {
   return deckArray;
 }
 
-function checkForRoundWinner() {
+function checkForRoundWinnerAndType() {
   const hasPlayerWon = WINNING_COMBOS[player.choice.name].includes(
     computer.choice.name
   );
 
   if (hasPlayerWon === true) {
-    roundWinner = player;
+    roundWinner = player, player.choice.type;
+    console.log(roundWinner)
   } else {
-    roundWinner = computer;
+    roundWinner = computer, computer.choice.type;
+    console.log(roundWinner)
   }
 }
+
+function checkForRoundWinner () {
+    if (player.choice === computer.choice){
+        msg = `you tied`
+    } else if (player.choice === 
+}
+
+checkForRoundWinnerAndType()
 
 function render() {
   renderHands();
