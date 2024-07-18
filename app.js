@@ -1,5 +1,6 @@
-// console.log(uuidv4())
 // --------------- Constants --------------- //
+
+const uid = new ShortUniqueId({ length: 10 });
 
 const CHOICES = [
   {
@@ -66,13 +67,15 @@ let deck;
 let roundWinner;
 let player;
 let computer;
+let gameOver;
 
 // --------------- Start Game --------------- //
 startGame();
 
 function startGame() {
-  deck = createDeck(10);
+  deck = createDeck(5);
   roundWinner = null;
+  gameOver = false
 
   player = {
     name: "Player",
@@ -130,7 +133,7 @@ function createDeck(numberCopies) {
       //1. Create an object with a unique id
       //Generate ID           Original Card Index    copied card index
       //    /                         /                 /
-      let cardId = { id: Number(`${choiceIndex}${cardCounter}`) };
+      let cardId = { id: uid.rnd() };
 
       //2. Take the object and and copy its properties into a target object (The card you are copying)
       // copied card               generated card with ID     original card
@@ -250,6 +253,9 @@ function renderMessage() {
 }
 
 function handleClick(card) {
+    if (gameOver) {
+        return
+    }
   player.choice = card;
   player.hand = player.hand.filter((playCard) => playCard.id !== card.id);
   const i = Math.floor(Math.random() * computer.hand.length);
@@ -292,10 +298,14 @@ function checkHand() {
   }
 }
 
+
+
 function gameWinner() {
   if (player.hp < 1) {
     messageDisplay.textContent = `Computer wins, try again by pressing the reset button`;
+    gameOver = true
   } else if (computer.hp < 1) {
     messageDisplay.textContent = `Player wins, try again by pressing the reset button `;
+    gameOver = true
   }
 }
