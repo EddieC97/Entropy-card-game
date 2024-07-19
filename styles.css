@@ -10,21 +10,21 @@ body {
 }
 
 #computer-cards img {
-    height: 170px ;
+    height:200px ;
     width: 100px;
     margin: 5px;
     
 }
 
 #user-cards img {
-    height: 170px ;
+    height:200px ;
     width: 100px;
     margin: 5px;
     
 }
 
 #End-Turn {
-    width: 100px;
+    width: 200px;
     height: 50px;
     font-size:20px;
 }
