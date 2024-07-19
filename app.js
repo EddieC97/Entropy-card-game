@@ -80,14 +80,14 @@ function startGame() {
 
   player = {
     name: "Player",
-    hp: 20,
+    hp: 5,
     choice: null,
     hand: createHand(),
   };
 
   computer = {
     name: `Computer`,
-    hp: 20,
+    hp: 5,
     choice: null,
     hand: createHand(),
   };
