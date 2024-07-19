@@ -300,5 +300,19 @@ function gameWinner() {
   }
 }
 
+function toggleWhatGamePopup() {
+    let popupGame = document.getElementById("popupGame")
+    popupGame.style.visibility = 
+    (popupGame.style.visibility ==="visible") ? "hidden":"visible"
+             
+}
 
 
+// function toggleWhatGamePopup() {
+//     let popupGame = document.getElementById("popupGame")
+//     // popupGame.style.visibility = 
+//     (popupGame.style.visibility ==="visible") ?  "hidden" :         "visible"
+//     //        |                                       |               |
+//     // this ask the question if the pop up is      if visible       if hidden then turn visible
+//     // visible                                    then turn hidden              
+// }
