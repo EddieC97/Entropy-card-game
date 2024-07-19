@@ -134,7 +134,7 @@ nav li {
 }
 
 .galaxy {
-    visibility:hidden;
+    visibility:shown;
     position:fixed;
     top:0;
     left:0;
