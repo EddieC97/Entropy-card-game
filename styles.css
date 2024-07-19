@@ -99,6 +99,7 @@ nav ul {
 }
 
 nav li {
+    font-size:2rem;
     height:50px;
     padding: 0 30px;
 }
