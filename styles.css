@@ -41,6 +41,8 @@ body {
 
 }
 
+
+
 #message {
     font-size: 3rem;
     height: 200px;
@@ -50,8 +52,8 @@ body {
 }
 
 #compare-zone > img {
-    height: 100px;
-    Width:100px;
+    height: 200px;
+    Width: 100px ;
 }
 
 #Reset {
