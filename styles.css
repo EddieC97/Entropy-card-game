@@ -16,11 +16,24 @@ body {
     
 }
 
+
+#computerHp{
+    font-size:3rem;
+    color: red;
+
+}
+
 #user-cards img {
     height:200px ;
     width: 100px;
     margin: 5px;
     
+}
+
+#userHp{
+    font-size:3rem;
+    color: red;
+
 }
 
 #End-Turn {
