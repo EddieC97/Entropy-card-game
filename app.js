@@ -57,7 +57,7 @@ const messageDisplay = document.querySelector(`#message`);
 const computerHpDisplay = document.querySelector(`#computerHp`);
 const userHpDisplay = document.querySelector(`#userHp`);
 const resetButtonEl = document.querySelector(`#Reset`);
-const whatGameButtonEl = document.querySelector(`#whatGame`)
+const whatGameButtonEl = document.querySelector(`#whatGame`);
 
 // --------------- Variables --------------- //
 
@@ -76,7 +76,7 @@ startGame();
 function startGame() {
   deck = createDeck(5);
   roundWinner = null;
-  gameOver = false
+  gameOver = false;
 
   player = {
     name: "Player",
@@ -98,8 +98,6 @@ function startGame() {
 // --------------- Event Listeners --------------- //
 
 resetButtonEl.addEventListener(`click`, startGame);
-
-
 
 // --------------- Functions --------------- //
 
@@ -171,15 +169,14 @@ function checkForRoundWinner() {
   );
   const hasComputerWon = WINNING_COMBOS[computer.choice.name].includes(
     player.choice.name
-);
-
+  );
 
   if (hasPlayerWon === true) {
     roundWinner = player;
-  } else if (hasComputerWon) { 
+  } else if (hasComputerWon) {
     roundWinner = computer;
   } else if (!hasComputerWon && !hasPlayerWon) {
-    roundWinner = `tie`
+    roundWinner = `tie`;
   }
   triggerCardType(roundWinner);
 }
@@ -211,6 +208,7 @@ function renderHands() {
   computer.hand.forEach((card, i) => {
     const newCardEl = document.createElement("img");
     newCardEl.src = `./card/CardBack.png`;
+    newCardEl.alt =`opponent's card back`;
     computerCardDisplay.appendChild(newCardEl);
   });
 
@@ -218,6 +216,7 @@ function renderHands() {
   player.hand.forEach((card, i) => {
     const newCardEl = document.createElement("img");
     newCardEl.src = `./card/${card.name}${card.type}.png`;
+    newCardEl.alt =`${card.name} ${card.description}`
     newCardEl.addEventListener(`click`, () => handleClick(card));
     userCardDisplay.appendChild(newCardEl);
   });
@@ -230,9 +229,11 @@ function renderCompareZone() {
 
   const playerCardEl = document.createElement("img");
   playerCardEl.src = `./card/${player.choice.name}${player.choice.type}.png`;
+  playerCardEl.alt = `${player.choice.name} ${player.choice.description}`
 
   const computerCardEl = document.createElement("img");
   computerCardEl.src = `./card/${computer.choice.name}${computer.choice.type}.png`;
+  computerCardEl.alt = `${computer.choice.name} ${computer.choice.description}`
 
   compareZoneDisplay.append(computerCardEl, playerCardEl);
 }
@@ -243,22 +244,19 @@ function renderHp() {
 }
 
 function renderMessage() {
- 
-
-  if (roundWinner === `tie`){
-    messageDisplay.textContent = `You Tied!`
+  if (roundWinner === `tie`) {
+    messageDisplay.textContent = `You Tied!`;
   } else if (roundWinner === null) {
     messageDisplay.innerHTML = "";
   } else {
     messageDisplay.textContent = `${roundWinner.name} wins!`;
   }
-
 }
 
 function handleClick(card) {
-    if (gameOver) {
-        return
-    }
+  if (gameOver) {
+    return;
+  }
   player.choice = card;
   player.hand = player.hand.filter((playCard) => playCard.id !== card.id);
   const i = Math.floor(Math.random() * computer.hand.length);
@@ -273,8 +271,6 @@ function handleClick(card) {
   gameWinner();
 }
 
-
-
 function checkHand() {
   if (deck.length === 0) {
     deck = createDeck(5);
@@ -288,46 +284,43 @@ function checkHand() {
   }
 }
 
-
-
 function gameWinner() {
   if (player.hp < 1) {
     messageDisplay.textContent = `Computer wins, try again by pressing the reset button`;
-    gameOver = true
+    gameOver = true;
   } else if (computer.hp < 1) {
     messageDisplay.textContent = `Player wins, try again by pressing the reset button `;
-    gameOver = true
+    gameOver = true;
   }
 }
 
 function toggleWhatGamePopup() {
-    let popupGame = document.getElementById("popupGame")
-    popupGame.style.visibility = 
-    (popupGame.style.visibility ==="visible") ? "hidden":"visible"
-             
+  let popupGame = document.getElementById("popupGame");
+  popupGame.style.visibility =
+    popupGame.style.visibility === "visible" ? "hidden" : "visible";
 }
 
-function toggleHowGamePopup () {
-    let popupHow = document.getElementById("popupHow")
-    popupHow.style.visibility = 
-    (popupHow.style.visibility === "visible") ? "hidden" : "visible"
+function toggleHowGamePopup() {
+  let popupHow = document.getElementById("popupHow");
+  popupHow.style.visibility =
+    popupHow.style.visibility === "visible" ? "hidden" : "visible";
 }
 
-function toggleGalaxyBackground () {
-    let GalaxyBackground = document.getElementById("GalaxyBackground")
-    GalaxyBackground.style.visibility = 
-    (GalaxyBackground.style.visibility === "visible")? "hidden" : "visible"
-    let HP = document.querySelectorAll(`.HP`)
-    HP.forEach(hp => {
-      hp.classList.toggle(`darkMode`) 
-    })
+function toggleGalaxyBackground() {
+  let GalaxyBackground = document.getElementById("GalaxyBackground");
+  GalaxyBackground.style.visibility =
+    GalaxyBackground.style.visibility === "visible" ? "hidden" : "visible";
+  let HP = document.querySelectorAll(`.HP`);
+  HP.forEach((hp) => {
+    hp.classList.toggle(`darkMode`);
+  });
 }
 
 // function toggleWhatGamePopup() {
 //     let popupGame = document.getElementById("popupGame")
-//     // popupGame.style.visibility = 
+//     // popupGame.style.visibility =
 //     (popupGame.style.visibility ==="visible") ?  "hidden" :         "visible"
 //     //        |                                       |               |
 //     // this ask the question if the pop up is      if visible       if hidden then turn visible
-//     // visible                                    then turn hidden              
+//     // visible                                    then turn hidden
 // }

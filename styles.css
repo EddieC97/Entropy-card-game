@@ -64,7 +64,7 @@ body {
     font-size: 1.5rem;
     position:absolute;
     background: rgba(255,255,255,0.7);
-    right: 700px;
+    right: 200px;
     height: 250px;
     width:250px;
     border:2px solid black;
@@ -121,6 +121,7 @@ nav li {
 #Galaxy-backgroundbtn {
     height:50px;
     width:100px;
+    font-size:1.5rem;
 }
 
 .popup {
@@ -154,7 +155,7 @@ nav li {
 }
 
 .galaxy {
-    visibility:show;
+    visibility:hidden;
     position:fixed;
     top:0;
     left:0;
