@@ -33,7 +33,7 @@ src="./card/Original.png">
 I chose this game because I wanted to expand on the rock, paper scissor logic and wanted to make the game my version by layering a card element on top. I have always been fascinated by Hearthstone (Digital collectable card game) and the game mechanic behind it.
 
 ## Getting started?
-[Deployed Game link](https://eddiec97.github.io/Entropy-card-game/)
+[Deployed Game link](https://eddiec97.github.io/Entropy-card-game/)\
 [Planning Game Link](https://github.com/EddieC97/Entropy-card-game/blob/main/Planning.md)
 
 ## Attributions: 
@@ -43,7 +43,7 @@ I chose this game because I wanted to expand on the rock, paper scissor logic an
 ## Technology used 
 **JavaScript**\
 **HTML**\
-**CSS**\
+**CSS**
 
 ## Next Steps:
 1. Adding more variety of cards with new effects (draw 2, opponent draw 2 ,see opponent hand)
