@@ -129,29 +129,28 @@ nav li {
     background:white;
     top:30%;
     left:40%;
-    /* transform: translate (-50%, -50%); */
     height:350px;
     width: 300px;
     font-size:1rem;
     border-radius:10px;
     box-shadow: 10px 10px 20px black;
     z-index:10;  /* Z-index indicates how much forward from the base layer to do the popup */
-    transition: visibility 1s ease ; /* this says how long the effect will start after clicking button*/
+    transition: visibility 0.5s ease ; /* this says how long the effect will start after clicking button*/
 }
 
 .popupHow {
-    visibility: hidden;
+    visibility: show;
     position:fixed;
     background:white;
     top:10%;
     left:40%;
-    height:700px;
+    height:750px;
     width: 500px;
     font-size:1rem;
     border-radius:10px;
     box-shadow: 10px 10px 20px black;
     z-index:10;   
-    transition: visibility 1s ease ; 
+    transition: visibility 0.5s ease ; 
 }
 
 .galaxy {
@@ -172,4 +171,9 @@ nav li {
 
 .darkMode{
     color:white;
+}
+
+#rules{
+    height:400px;
+    width:500px
 }

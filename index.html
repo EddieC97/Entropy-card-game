@@ -13,7 +13,7 @@
       <ul>
         <li>Entropy Card Game</li>
         <button onclick="toggleWhatGamePopup()" id="whatGame">
-          What is this Game?
+          What is this game?
         </button>
         <div id="popupGame" class="popup">
           <h3>What is this game?</h3>
@@ -36,23 +36,26 @@
         <div id="popupHow" class="popupHow">
           <h3>How to play this game</h3>
           <p>
-            Players each choose a gesture and reveal it simultaneously.
+            Players each choose a card and reveal it simultaneously. 
+            The Player picks the card by clicking on the card.
             The outcome is determined based on specific rules:
-            <ul>
-              <li>Scissors cuts Paper</li>
-              <li>Paper covers Rock</li>
-              <li>Rock crushes Lizard</li>
-              <li>Lizard poisons Spock</li>
-              <li>Spock smashes Scissors</li>
-              <li>Scissors decapitates Lizard</li>
-              <li>Lizard eats Paper</li>
-              <li>Paper disproves Spock</li>
-              <li>Spock vaporizes Rock</li>
-              <li>Rock crushes Scissors</li>
-            </ul>
+            <div>Scissors cut Paper</div>
+            <div>Paper covers Rock</div>
+            <div>Rock crushes Lizard</div>
+            <div>Lizard poisons Spock</div>
+            <div>Spock smashes Scissors</div>
+            <div>Scissors decapitates Lizard</div>
+            <div>Lizard eats Paper</div>
+            <div>Paper disproves Spock</div>
+            <div>Spock vaporizes Rock</div>
+            <div>Rock crushes Scissors</div>
             If both players choose the same card, it results in a tie, and they continue until a winner emerges.
-            a visual representation of the game's rules can be seen below.
-            <img scr="./card/Original.png">
+            The winner is determined by who is left standing (player that still has HP)
+            A visual representation of the game's rules can be seen below.
+            <img id ="rules" 
+            alt="picture showing how different choices affect each other " 
+            src="./card/Original.png">
+            
           </p>
         </div>
         <button onclick="toggleGalaxyBackground()" id="Galaxy-backgroundbtn">
