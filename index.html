@@ -17,14 +17,22 @@
               <h3>What is this game?</h3>
               <p>my explanation will go here</p>
             </div> 
-          <button id="howGame">How to play this game?</button>
+          <button onclick="toggleHowGamePopup()" id="howGame">How to play this game?</button>
+            <div id ="popupHow" class = "popup">
+              <h3>How to play this game</h3>
+              <p> my description of the game </p>
+            </div>
       </ul>
     </nav>
     <h2>Computer's HP :<span id="Computer"></span></h2>
     <div id="computerHp">HP</div>
     <div id="computer-cards"></div>
-    <div id="compare-zone"></div>
-    <div id="message"></div>
+    <section id="compare-zone-box"> 
+      <div id="compare-zone"></div>
+      <div id="message"></div>
+    
+    </section>
+   
 
     <h2>Your HP: <span id="User"></span></h2>
     <div id="userHp">HP</div>

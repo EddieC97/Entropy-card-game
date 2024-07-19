@@ -98,7 +98,7 @@ function startGame() {
 // --------------- Event Listeners --------------- //
 
 resetButtonEl.addEventListener(`click`, startGame);
-whatGameButtonEl.addEventListener(`click`, whatGame )
+
 
 
 // --------------- Functions --------------- //
@@ -307,6 +307,11 @@ function toggleWhatGamePopup() {
              
 }
 
+function toggleHowGamePopup () {
+    let popupHow = document.getElementById("popupHow")
+    popupHow.style.visibility = 
+    (popupHow.style.visibility === "visible") ? "hidden" : "visible"
+}
 
 // function toggleWhatGamePopup() {
 //     let popupGame = document.getElementById("popupGame")

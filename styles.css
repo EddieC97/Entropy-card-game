@@ -36,6 +36,11 @@ body {
 
 }
 
+#compare-zone-box {
+    display:flex;
+    align-items:center;
+
+}
 
 
 #compare-zone {
@@ -55,6 +60,8 @@ body {
 
 #message {
     font-size: 3rem;
+    position:absolute;
+    right: 200px;
     height: 200px;
     width:200px;
     border:2px solid black;
@@ -73,11 +80,13 @@ body {
 }
 
 #whatGame {
+    font-size:1.25rem;
     Height:50px;
     Width:200px;
 }
 
 #howGame {
+    font-size:1.25rem;
     Height:50px;
     Width: 200px;
 }
