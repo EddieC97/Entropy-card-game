@@ -109,5 +109,19 @@ function createDeck(numberCopies) {
   return shuffleDeck(deckArray);
 }
 ```
+```Javascript
+function shuffleDeck(deckArray) {
+  for (let i = 0; i < deckArray.length; i++) {
+    let temp = deckArray[i];
 
+    let r = Math.floor(Math.random() * deckArray.length);
 
+    deckArray[i] = deckArray[r];
+
+    deckArray[r] = temp;
+  }
+  return deckArray;
+}
+```
+
+## Web Accessibility
