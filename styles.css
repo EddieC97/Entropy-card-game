@@ -130,3 +130,15 @@ nav li {
     transition: visibility 1s ease ; /* this says how long the effect will start after clicking button*/
 }
 
+.galaxy {
+    position:fixed;
+    top:0;
+    left:0;
+    background-size:cover;
+    background:no-repeat center;
+    width:100vw;
+    height:100vh;
+    z-index:-1;
+    user-select:none;
+    pointer-events:none;
+}
