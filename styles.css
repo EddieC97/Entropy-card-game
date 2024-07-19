@@ -46,6 +46,7 @@ body {
 #compare-zone {
     
     height: 450px;
+    background: rgba(255,255,255,0.7);
     Width: 300px;
     margin:auto;
     border: 2px solid black;
@@ -62,11 +63,13 @@ body {
 #message-box {
     font-size: 1.5rem;
     position:absolute;
+    background: rgba(255,255,255,0.7);
     right: 50px;
     height: 250px;
     width:250px;
     border:2px solid black;
     border-radius: 5px;
+
 
 }
 
@@ -131,14 +134,16 @@ nav li {
 }
 
 .galaxy {
+    visibility:hidden;
     position:fixed;
     top:0;
     left:0;
     background-size:cover;
     background:no-repeat center;
-    width:100vw;
+    width:100vh;
     height:100vh;
     z-index:-1;
     user-select:none;
     pointer-events:none;
+    
 }

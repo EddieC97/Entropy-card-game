@@ -313,6 +313,12 @@ function toggleHowGamePopup () {
     (popupHow.style.visibility === "visible") ? "hidden" : "visible"
 }
 
+function toggleGalaxyBackground () {
+    let GalaxyBackground = document.getElementById(GalaxyBackground)
+    GalaxyBackground.style.visibility = 
+    (GalaxyBackground.style.visibility === "visible")? "hidden" : "visible"
+}
+
 // function toggleWhatGamePopup() {
 //     let popupGame = document.getElementById("popupGame")
 //     // popupGame.style.visibility = 
