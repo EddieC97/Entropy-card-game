@@ -317,6 +317,10 @@ function toggleGalaxyBackground () {
     let GalaxyBackground = document.getElementById("GalaxyBackground")
     GalaxyBackground.style.visibility = 
     (GalaxyBackground.style.visibility === "visible")? "hidden" : "visible"
+    let HP = document.querySelectorAll(`.HP`)
+    HP.forEach(hp => {
+      hp.classList.toggle(`darkMode`) 
+    })
 }
 
 // function toggleWhatGamePopup() {
