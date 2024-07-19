@@ -122,11 +122,12 @@ nav li {
     visibility: hidden;
     position:fixed;
     background:white;
-    top:40%;
-    left:50%;
+    top:30%;
+    left:40%;
     /* transform: translate (-50%, -50%); */
-    width: 200px;
-    height:150px;
+    height:350px;
+    width: 300px;
+    font-size:1rem;
     border-radius:10px;
     box-shadow: 10px 10px 20px black;
     z-index:10;  /* Z-index indicates how much forward from the base layer to do the popup */
@@ -134,7 +135,7 @@ nav li {
 }
 
 .galaxy {
-    visibility:shown;
+    visibility:hidden;
     position:fixed;
     top:0;
     left:0;

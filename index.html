@@ -12,57 +12,63 @@
     <nav>
       <ul>
         <li>Entropy Card Game</li>
-          <button onclick="toggleWhatGamePopup()" id="whatGame">What is this Game?</button>
-            <div id ="popupGame" class = "popup">
-              <h3>What is this game?</h3>
-              <p> This is basically a level up version of the traditional rock,paper,scissor game with a card element
-                "Rock, Paper, Scissors, Lizard, Spock," made famous by "The Big Bang Theory,"
-                 adds Lizard and Spock to the classic game. 
-                 Unlike regular Rock, Paper, Scissors, where each thing beats one and loses to another, 
-                 this version has each choice interacting with more than just one other choice. 
-                 This makes the game more strategic, as players have to think about more possibilities with 
-                 each move they make.</p>
-            </div> 
-          <button onclick="toggleHowGamePopup()" id="howGame">How to play this game?</button>
-            <div id ="popupHow" class = "popup">
-              <h3>How to play this game</h3>
-              <p> my description of the game </p>
-            </div>
-          <button onclick="toggleGalaxyBackground()" id="Galaxy-backgroundbtn">Galaxy</button>
-            <div id ="GalaxyBackground" class="galaxy"></div> 
-              <iframe 
-              class="galaxy"
-              src="https://www.youtube.com/embed/_XV2JW_ULLA?autoplay=1&mute=1&controls=0&loop=1"
-              frameborder="0"
-              allowFullScreen
-              allow="autoplay"
-              >
-              </iframe>
-
+        <button onclick="toggleWhatGamePopup()" id="whatGame">
+          What is this Game?
+        </button>
+        <div id="popupGame" class="popup">
+          <h3>What is this game?</h3>
+          <p>
+            "Rock, Paper, Scissors, Lizard, Spock," made famous by "The Big Bang
+            Theory," is a more complex version of the classic game. It
+            introduces Lizard and Spock alongside the original choices. Unlike
+            traditional Rock, Paper, Scissors, where each option has a single
+            counterpart it defeats or is defeated by, each choice in this game
+            interacts with multiple others. This added complexity requires
+            players to think strategically about their moves. Additionally, each
+            player has a health pool (HP), and the goal is to reduce the
+            opponent's HP to zero by playing cards strategically, winning
+            rounds, and activating card effects.
+          </p>
+        </div>
+        <button onclick="toggleHowGamePopup()" id="howGame">
+          How to play this game?
+        </button>
+        <div id="popupHow" class="popup">
+          <h3>How to play this game</h3>
+          <p>my description of the game</p>
+        </div>
+        <button onclick="toggleGalaxyBackground()" id="Galaxy-backgroundbtn">
+          Galaxy
+        </button>
+        <div id="GalaxyBackground" class="galaxy"></div>
+        <iframe
+          class="galaxy"
+          src="https://www.youtube.com/embed/_XV2JW_ULLA?autoplay=1&mute=1&controls=0&loop=1"
+          frameborder="0"
+          allowfullscreen
+          allow="autoplay"
+        >
+        </iframe>
       </ul>
     </nav>
-    <iframe 
+    <iframe
       class="galaxy"
       src="https://www.youtube.com/embed/_XV2JW_ULLA?autoplay=1&mute=1&controls=0"
       frameborder="0"
-      allowFullScreen
+      allowfullscreen
       allow="autoplay"
     >
-  </iframe>
+    </iframe>
     <h2>Computer's HP :<span id="Computer"></span></h2>
     <div id="computerHp">HP</div>
     <div id="computer-cards"></div>
-    <section id="compare-zone-box"> 
+    <section id="compare-zone-box">
       <div id="compare-zone"></div>
       <div id="message-box">
         <h6>Message:</h6>
         <p id="message"></p>
       </div>
-  
-  
-    
     </section>
-   
 
     <h2>Your HP: <span id="User"></span></h2>
     <div id="userHp">HP</div>
@@ -73,7 +79,6 @@
     <p id="results"></p>
   </body>
 </html>
-
 
 <!-- <iframe 
       class="galaxy"
