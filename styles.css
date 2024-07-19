@@ -118,6 +118,11 @@ nav li {
     padding: 0 30px;
 }
 
+#Galaxy-backgroundbtn {
+    height:50px;
+    width:100px;
+}
+
 .popup {
     visibility: hidden;
     position:fixed;
@@ -161,24 +166,10 @@ nav li {
     z-index:-1;
     user-select:none;
     pointer-events:none;
-    color:white;
+
     
 }
 
 .darkMode{
     color:white;
 }
-/* .galaxy {
-    visibility:hidden;
-    position:fixed;
-    top:0;
-    left:0;
-    background-size:cover;
-    background:no-repeat center;
-    width:100vh;
-    height:100vh;
-    z-index:-1;
-    user-select:none;
-    pointer-events:none;
-    
-} */
