@@ -9,7 +9,7 @@
 
 ## Game Rules
 
-Each player choose a card and reveal it simultaneously. 
+Each player chooses a card and reveals it simultaneously. 
 The Player picks the card by clicking on the card.
 The outcome is determined based on specific rules:
 1. Scissors cut Paper
@@ -23,7 +23,7 @@ The outcome is determined based on specific rules:
 9. Spock vaporizes Rock
 10. Rock crushes Scissors
 
-If both players choose the same card, it results in a tie, and they continue until a winner emerges.The winner is determined by who is left standing (player that still has HP).A visual representation of the game's rules can be seen below.
+If both players choose the same card, it results in a tie, and they continue until a winner emerges. The winner is determined by who is left standing (player that still has HP). A visual representation of the game's rules can be seen below.
 <img id ="rules" 
 alt="picture showing how different choices affect each other " 
 src="./card/Original.png">
@@ -46,14 +46,16 @@ I chose this game because I wanted to expand on the rock, paper scissor logic an
 **CSS**\
 
 ## Next Steps:
-1. Adding more variety of cards with new effect (draw 2, opponent draw 2 ,see opponent hand)
-2. Adding more background theme 
+1. Adding more variety of cards with new effects (draw 2, opponent draw 2 ,see opponent hand)
+2. Adding more background themes 
 3. Allowing for 2 person play across a server
-4. History of cards played and effect triggered
+4. Keeping record of cards played and effect triggered
 
 
 ## What I learned:
 
+
+This is the Javascript for how to create a pop-up button 
 ```JavaScript
 function toggleWhatGamePopup() {
     let popupGame = document.getElementById("popupGame")
@@ -64,13 +66,11 @@ function toggleWhatGamePopup() {
     // visible                                    then turn hidden
 }
 ```
-Object.assign(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
-Create a shallow copy of each card from the CHOICES array, and combine with the cardId object above.
-You then push this new object, cardCopy, into the deckArray.
 
 
 
 
+This was originally how we created the id prior to the UUID library 
 ```JavaScript
 function createDeck(numberCopies) {
   let deckArray = [];
@@ -109,6 +109,8 @@ function createDeck(numberCopies) {
   return shuffleDeck(deckArray);
 }
 ```
+
+This is called the Fisher-Yates shuffle algorithm
 ```Javascript
 function shuffleDeck(deckArray) {
   for (let i = 0; i < deckArray.length; i++) {
@@ -125,3 +127,4 @@ function shuffleDeck(deckArray) {
 ```
 
 ## Web Accessibility
+![Web Accessibility confirmation](WCAG2.0.png)

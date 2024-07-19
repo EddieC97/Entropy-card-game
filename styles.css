@@ -46,8 +46,6 @@ body {
 }
 
 
-/* Pseudo-elements - https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-elements */
-/* ::before - https://developer.mozilla.org/en-US/docs/Web/CSS/::before */
 #compare-zone-box::before {
     content: "";
     flex: 1;
@@ -102,7 +100,7 @@ body {
 
 nav{
     background-color:white;
-    box-shadow: 10px 5px 10px black; /* 3px moving to the right, 3px moving down 10px for how blurry the shadow , last is color */
+    box-shadow: 10px 5px 10px black;
 }
 
 nav ul {
@@ -139,8 +137,8 @@ nav li {
     font-size:1rem;
     border-radius:10px;
     box-shadow: 10px 10px 20px black;
-    z-index:10;  /* Z-index indicates how much forward from the base layer to do the popup */
-    transition: visibility 0.5s ease ; /* this says how long the effect will start after clicking button*/
+    z-index:10;  
+    transition: visibility 0.5s ease ; 
 }
 
 .popupHow {

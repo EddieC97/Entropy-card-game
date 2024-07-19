@@ -161,7 +161,9 @@ function triggerCardType(winner) {
   if (winner === player) {
     if (player.choice.type === "Damage") {
       computer.hp -= player.choice.effect;
-    } else if (player.choice.type === "Heal") player.hp += player.choice.effect;
+    } else if (player.choice.type === "Heal") {  
+      player.hp += player.choice.effect;
+    }
   } else if (winner === computer) {
     if (computer.choice.type === "Damage") {
       player.hp -= computer.choice.effect;
@@ -265,7 +267,7 @@ function gameWinner() {
     messageDisplay.textContent = `Computer wins, try again by pressing the reset button`;
     gameOver = true;
   } else if (computer.hp < 1) {
-    messageDisplay.textContent = `Player wins, try again by pressing the reset button `;
+    messageDisplay.textContent = `Player wins, try again by pressing the reset button`;
     gameOver = true;
   }
 }
