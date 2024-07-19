@@ -111,39 +111,15 @@ function createHand() {
   return hand;
 }
 
-// Object.assign(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
-// Create a shallow copy of each card from the CHOICES array, and combine with the cardId object above.
-// You then push this new object, cardCopy, into the deckArray.
-
 function createDeck(numberCopies) {
   let deckArray = [];
 
   for (let choiceIndex = 0; choiceIndex < CHOICES.length; choiceIndex++) {
     for (let cardCounter = 0; cardCounter < numberCopies; cardCounter++) {
-      //00 --> Rock/Damage [0] Card Copy Number [0]
-      //01 -->Rock/Damage [0] Card Copy Number [1]
-      //02
-      //03
-      //04
-      //10
-      //11
-      //12
-      //13
-      //14
-
-      //1. Create an object with a unique id
-      //Generate ID           Original Card Index    copied card index
-      //    /                         /                 /
       let cardId = { id: uid.rnd() };
 
-      //2. Take the object and and copy its properties into a target object (The card you are copying)
-      // copied card               generated card with ID     original card
-      //      /                        /                       /
       let cardCopy = Object.assign(cardId, CHOICES[choiceIndex]);
 
-      // 3. Take the copied cards and push them into the deckArray
-      // Final deck      copied card
-      //    /               /
       deckArray.push(cardCopy);
     }
   }
@@ -208,7 +184,7 @@ function renderHands() {
   computer.hand.forEach((card, i) => {
     const newCardEl = document.createElement("img");
     newCardEl.src = `./card/CardBack.png`;
-    newCardEl.alt =`opponent's card back`;
+    newCardEl.alt = `opponent's card back`;
     computerCardDisplay.appendChild(newCardEl);
   });
 
@@ -216,7 +192,7 @@ function renderHands() {
   player.hand.forEach((card, i) => {
     const newCardEl = document.createElement("img");
     newCardEl.src = `./card/${card.name}${card.type}.png`;
-    newCardEl.alt =`${card.name} ${card.description}`
+    newCardEl.alt = `${card.name} ${card.description}`;
     newCardEl.addEventListener(`click`, () => handleClick(card));
     userCardDisplay.appendChild(newCardEl);
   });
@@ -229,11 +205,11 @@ function renderCompareZone() {
 
   const playerCardEl = document.createElement("img");
   playerCardEl.src = `./card/${player.choice.name}${player.choice.type}.png`;
-  playerCardEl.alt = `${player.choice.name} ${player.choice.description}`
+  playerCardEl.alt = `${player.choice.name} ${player.choice.description}`;
 
   const computerCardEl = document.createElement("img");
   computerCardEl.src = `./card/${computer.choice.name}${computer.choice.type}.png`;
-  computerCardEl.alt = `${computer.choice.name} ${computer.choice.description}`
+  computerCardEl.alt = `${computer.choice.name} ${computer.choice.description}`;
 
   compareZoneDisplay.append(computerCardEl, playerCardEl);
 }
@@ -316,6 +292,8 @@ function toggleGalaxyBackground() {
   });
 }
 
+//-------------------- Code Graveyard---------------------------//
+
 // function toggleWhatGamePopup() {
 //     let popupGame = document.getElementById("popupGame")
 //     // popupGame.style.visibility =
@@ -323,4 +301,45 @@ function toggleGalaxyBackground() {
 //     //        |                                       |               |
 //     // this ask the question if the pop up is      if visible       if hidden then turn visible
 //     // visible                                    then turn hidden
+// }
+
+// Object.assign(): https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign
+// Create a shallow copy of each card from the CHOICES array, and combine with the cardId object above.
+// You then push this new object, cardCopy, into the deckArray.
+
+// function createDeck(numberCopies) {
+//   let deckArray = [];
+
+//   for (let choiceIndex = 0; choiceIndex < CHOICES.length; choiceIndex++) {
+//     for (let cardCounter = 0; cardCounter < numberCopies; cardCounter++) {
+//       //00 --> Rock/Damage [0] Card Copy Number [0]
+//       //01 -->Rock/Damage [0] Card Copy Number [1]
+//       //02
+//       //03
+//       //04
+//       //10
+//       //11
+//       //12
+//       //13
+//       //14
+
+
+
+//       //1. Create an object with a unique id
+//       //Generate ID           Original Card Index    copied card index
+//       //    /                         /                 /
+//       let cardId = { id: uid.rnd() };
+
+//       //2. Take the object and and copy its properties into a target object (The card you are copying)
+//       // copied card               generated card with ID     original card
+//       //      /                        /                       /
+//       let cardCopy = Object.assign(cardId, CHOICES[choiceIndex]);
+
+//       // 3. Take the copied cards and push them into the deckArray
+//       // Final deck      copied card
+//       //    /               /
+//       deckArray.push(cardCopy);
+//     }
+//   }
+//   return shuffleDeck(deckArray);
 // }
