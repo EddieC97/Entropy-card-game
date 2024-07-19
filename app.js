@@ -314,7 +314,7 @@ function toggleHowGamePopup () {
 }
 
 function toggleGalaxyBackground () {
-    let GalaxyBackground = document.getElementById(GalaxyBackground)
+    let GalaxyBackground = document.getElementById("GalaxyBackground")
     GalaxyBackground.style.visibility = 
     (GalaxyBackground.style.visibility === "visible")? "hidden" : "visible"
 }
