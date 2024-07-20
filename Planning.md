@@ -12,34 +12,35 @@ Each turn, players will select a card and the rock, paper, scissor, Lizard, Spoc
 (if I have more time, I am thinking of putting something like a timer: for example, after 15 rounds, then each card drawn will inflict -1 then -2 then -3 etc to make sure the game doesn't go on forever)
 
 ## HTML:
-Nav bar to display what is the game and how to play the game 
-Player Hand : displays the user's cards
-Computer Hand: displays the computer's card( this case will just be the card back)
-Compare Zone: to display the selected card
+Nav bar to display what is the game and how to play the game\
+Player Hand : displays the user's cards\
+Computer Hand: displays the computer's card( this case will just be the card back)\
+Compare Zone: to display the selected card\
 Message: to display what is the outcome 
 
 ## JS:
 ## const:
-choices so I can loop through to create copies of cards to generate a deck 
+choices so I can loop through to create copies of cards to generate a deck
+
 Winning combos to loop through to find the winner 
 
 ## let:
-Player
-playerHp
-Computer
-computerHp 
-Compare Zone
+Player\
+playerHp\
+Computer\
+computerHp\
+Compare Zone\
 Deck
 
 ## Event listener:
-reset button 
+reset button\
 click 
 
 ## functions:
-renderCard function
-shuffleDeck function 
-renderPlayerHand function
-renderComputerHand function
+renderCard function\
+shuffleDeck function\
+renderPlayerHand function\
+renderComputerHand function\
 renderResults function
 
 
